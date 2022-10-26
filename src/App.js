@@ -1,14 +1,16 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import NavBar from './componets/NavBar';
-import ItemListContainer from './componets/ItemListContainer';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer';
 
-function App() {
+export default function App() {
+
   return (
 
     <div>
-      <NavBar />
-      <ItemListContainer greeting={"Hola"}/>
+      <NavBar button={true} color={"#dddddd"}/>
+      <ItemListContainer greeting={"Hola"} />
     </div>
 
     /*<div className="App">
@@ -27,7 +29,7 @@ function App() {
         </a>
       </header>
     </div>*/
+
   );
 }
 
-export default App;
