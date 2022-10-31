@@ -3,17 +3,22 @@ import { useState } from 'react';
 
 export default function ItemCount() {
 
-  const stock = 5;
+  const [stock, setStock] = useState(5);
 
   const [count, setCount] = useState(0);
 
+  let maxStock = stock;
+
   const stockChange = (simbol) => {
 
-    if(count > 0){
+    if(stock > 0 && stock < maxStock){
+      console.log(maxStock);
       if(simbol === "+"){
         setCount(count + 1);
+        setStock(stock - 1);
       }else{
         setCount(count - 1);
+        setStock(stock + 1);
       }
 
       /*console.log("Hay stock");
@@ -23,7 +28,7 @@ export default function ItemCount() {
       }else{
         setCount(count - 1);
         setStock(stock + 1);
-      }*/
+      }
 
     }else if(stock === 0){
       console.log("No hay stock");
@@ -31,15 +36,8 @@ export default function ItemCount() {
         setCount(count - 1);
         setStock(stock + 1);
       }
-    }
+    }*/
 
-
-
-    /*if(count > 0){
-      if(simbol === "+"){
-        setCount(count + 1);
-      } 
-    }
 
   };
 
