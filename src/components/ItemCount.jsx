@@ -20,25 +20,6 @@ export default function ItemCount() {
         setCount(count - 1);
         setStock(stock + 1);
       }
-
-      /*console.log("Hay stock");
-      if(simbol === "+"){
-        setCount(count + 1);
-        setStock(stock - 1);
-      }else{
-        setCount(count - 1);
-        setStock(stock + 1);
-      }
-
-    }else if(stock === 0){
-      console.log("No hay stock");
-      if(simbol === "-"){
-        setCount(count - 1);
-        setStock(stock + 1);
-      }
-    }*/
-
-
     }else if(stock === 0){
       console.log("No hay stock");
       if(simbol === "-"){
