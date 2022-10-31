@@ -3,26 +3,17 @@ import { useState } from 'react';
 
 export default function ItemCount() {
 
-  const [stock, setStock] = useState(5);
+  const stock = 5;
 
   const [count, setCount] = useState(0);
 
-  let aux = stock;
-
   const stockChange = (simbol) => {
 
-    if(stock > 0){
-
-      if(stock <= aux){
-        console.log("Hay stock");
-        if(simbol === "+"){
-          setCount(count + 1);
-          setStock(stock - 1);
-        }else{
-          setCount(count - 1);
-          setStock(stock + 1);
-        }
-
+    if(count > 0){
+      if(simbol === "+"){
+        setCount(count + 1);
+      }else{
+        setCount(count - 1);
       }
 
       /*console.log("Hay stock");
@@ -47,14 +38,8 @@ export default function ItemCount() {
     /*if(count > 0){
       if(simbol === "+"){
         setCount(count + 1);
-      }else{
-        setCount(count - 1);
-      }
-    }else if(count === 0){
-      if(simbol === "+"){
-        setCount(count + 1);
       } 
-    }*/
+    }
 
   };
 
