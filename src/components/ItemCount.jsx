@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 
 export default function ItemCount() {
 
@@ -12,7 +11,7 @@ export default function ItemCount() {
   const stockChange = (simbol) => {
 
     if(stock > 0 && stock < initialStock){
-      console.log("Hay stock");
+      //console.log("Hay stock");
       if(simbol === "+"){
         setCount(count + 1);
         setStock(stock - 1);
@@ -21,7 +20,7 @@ export default function ItemCount() {
         setStock(stock + 1);
       }
     }else if(stock === 0){
-      console.log("No hay stock");
+      //console.log("No hay stock");
       if(simbol === "-"){
         setCount(count - 1);
         setStock(stock + 1);
@@ -33,6 +32,10 @@ export default function ItemCount() {
       }
     }
   };
+
+  useEffect( () => {
+    console.log("modified stock");
+  },[stock]);
 
   return (
 
