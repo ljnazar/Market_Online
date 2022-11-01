@@ -82,26 +82,26 @@ export default function NavBar({ button , color}) {
                 <div className="flex space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
                   <a
-                    href="#"
+                    href="../../public/index.html"
                     className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium"
                     aria-current="page"
                   >
                     Desktop PC
                   </a>
                   <a
-                    href="#"
+                    href="../../public/index.html"
                     className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Notebook
                   </a>
                   <a
-                    href="#"
+                    href="../../public/index.html"
                     className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Impresora
                   </a>
                   <a
-                    href="#"
+                    href="../../public/index.html"
                     className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Accesorios
@@ -139,26 +139,26 @@ export default function NavBar({ button , color}) {
           <div className="space-y-1 px-2 pt-2 pb-3">
             {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
             <a
-              href="#"
+              href="../../public/index.html"
               className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium"
               aria-current="page"
             >
               Desktop PC
             </a>
             <a
-              href="#"
+              href="../../public/index.html"
               className="text-gray-800 hover:bg-gray-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Notebooks
             </a>
             <a
-              href="#"
+              href="../../public/index.html"
               className="text-gray-800 hover:bg-gray-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Impresoras
             </a>
             <a
-              href="#"
+              href="../../public/index.html"
               className="text-gray-800 hover:bg-gray-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Accesorios

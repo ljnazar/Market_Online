@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Item from './Item';
 import ItemCount from './ItemCount';
 import ItemList from './ItemList';

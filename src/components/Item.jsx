@@ -4,16 +4,16 @@ export default function Item() {
 
   const [arrayDePokes, setArrayDePokes] = useState([]);
 
-  useEffect(() => {
+  useEffect( () => {
 
     const getPokes = async () => {
-        try{
+        try {
             const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0");
-            console.log(res);
+            //console.log(res);
             const data = await res.json();
-            console.log(data.results);
+            //console.log(data.results);
             setArrayDePokes(data.results);
-        } catch (error){
+        } catch (error) {
             console.log(error);
         } finally {
             console.log("finally");
@@ -22,29 +22,16 @@ export default function Item() {
 
     getPokes();
 
-    /*console.log("Fetch to firebase");
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=10&offset=0")
-    .then(res => res.json())
-    .then(resJSON => {
-        console.log(resJSON);
-        setArrayDePokes(resJSON.results);
-    })
-    .catch(e => {
-        console.log(e);
-    })
-    .finally(() => {
-        console.log("Ya ejecutó todo")
-    })*/
-
   }, []);
 
   return ( 
     <div>
       {arrayDePokes.map( 
         item => { 
-            return <h2>{item.name}</h2>
+            return <li key={item.name.toString()}>{item.name}</li>
         }
       )}
-    </div> )
+    </div>
+  )
   
 }
