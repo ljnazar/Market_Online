@@ -1,6 +1,11 @@
 import React, { useState ,useEffect } from 'react';
+// REVISAR
+//import {useParams} from "react-router-dom";
 
 export default function Item() {
+  
+  // REVISAR
+  //const {nameCategory} = useParams();
 
   const [arrayDePokes, setArrayDePokes] = useState([]);
 
@@ -26,11 +31,10 @@ export default function Item() {
 
   return ( 
     <div>
-      {arrayDePokes.map( 
-        item => { 
-            return <li key={item.name.toString()}>{item.name}</li>
-        }
-      )}
+      {/* {!productos.length && "Loading..."} */}
+      {arrayDePokes.map( item => { 
+        return <li key={item.name.toString()}>{item.name}</li>
+      })}
     </div>
   )
   

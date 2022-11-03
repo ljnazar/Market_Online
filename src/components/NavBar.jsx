@@ -2,6 +2,7 @@ import React from 'react';
 import CartWidget from './CartWidget'; 
 import '../output.css';
 import logo from '../logo.webp'
+import { Link } from 'react-router-dom';
 
 export default function NavBar({ button , color}) {
 
@@ -81,24 +82,21 @@ export default function NavBar({ button , color}) {
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
+                  <Link className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium"
+                    aria-current="page" to={"/"}>
+                    HOME
+                  </Link>
                   <a
-                    href="../../public/index.html"
-                    className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium"
-                    aria-current="page"
-                  >
-                    Desktop PC
-                  </a>
-                  <a
-                    href="../../public/index.html"
+                    href="/checkout"
                     className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Notebook
+                    PAGO
                   </a>
                   <a
-                    href="../../public/index.html"
+                    href="/category/:nameCategory"
                     className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Impresora
+                    CATEGORIA
                   </a>
                   <a
                     href="../../public/index.html"
