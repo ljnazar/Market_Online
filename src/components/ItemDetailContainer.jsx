@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
+import ItemDetail from './ItemDetail';
 
 
 export default function ItemDetailContainer() {
@@ -7,36 +8,35 @@ export default function ItemDetailContainer() {
     const { idItem } = useParams();
 
     const [product, setProduct] = useState({});
-
-    let productsPC = [
-      { id: 1, name: "Comodore 64", category: "desktop", price: 4500 },
-      { id: 2, name: "Lentium 3", category: "desktop", price: 4500 },
-      { id: 3, name: "Celeron", category: "desktop", price: 4500 },
-      { id: 4, name: "AMD 3.4 Gigawats", category: "desktop", price: 4500 },
-      { id: 5, name: "Intel i9", category: "desktop", price: 4500 }
-    ];
   
     useEffect(() => {
-      
-      const getProduct = new Promise((res, rej) => {
-        setTimeout(() => {
-          res(productsPC.find((item) => item.id == idItem));
-        }, 2000);
+
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+  
+      let raw = JSON.stringify({
+        "user_id": 4995,
+        "token": "cjnk9xexr1p"
       });
   
-      getProduct.then((res) => {
-          setProduct(res);
-      });
+      let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
   
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?cod_alfa=${idItem}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+          let resultObj = JSON.parse(result);
+          setProduct(resultObj.resultado);
+        })
+        .catch(error => console.log('error', error));
+
     }, [idItem]);
 
   return (
-    <div>
-        {product.id && (
-            <>
-                {product.id + " " + product.category + " " + product.name + " " + product.price}
-            </>
-        )}
-    </div>
+    <ItemDetail productDetail={product[0]}/>
   )
 }

@@ -79,23 +79,23 @@ export default function NavBar({ button , color}) {
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                  <Link className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/pc"}>
-                    PCs de Escritorio
+                  <Link className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/pc-de-escritorio"}>
+                    PCs
                   </Link>
-                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/notebooks"}>
+                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/notebooks-consumo"}>
                     Notebooks
                   </Link>
                   <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/monitores"}>
                     Monitores
                   </Link>
-                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/:idCategory"}>
+                  {/* <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/:idCategory"}>
                     CATEGORIA
                   </Link>
                   <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/item/:idItem"}>
                     ITEM
-                  </Link>
+                  </Link> */}
                   <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/checkout"}>
-                    PAGO
+                    Pago
                   </Link>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function NavBar({ button , color}) {
               className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium"
               aria-current="page"
             >
-              Desktop PC
+              PCs
             </a>
             <a
               href="../../public/index.html"
@@ -146,13 +146,13 @@ export default function NavBar({ button , color}) {
               href="../../public/index.html"
               className="text-gray-800 hover:bg-gray-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Impresoras
+              Monitores
             </a>
             <a
               href="../../public/index.html"
               className="text-gray-800 hover:bg-gray-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
-              Accesorios
+              Pago
             </a>
           </div>
         </div>

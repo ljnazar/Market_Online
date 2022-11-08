@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import Item from './Item';
-import ItemCount from './ItemCount';
 import ItemList from './ItemList';
 
 export default function ItemListContainer({greeting}) {
@@ -10,54 +8,39 @@ export default function ItemListContainer({greeting}) {
 
   const [products, setProducts] = useState([]);
 
-  let productsPC = [
-    { id: 1, name: "Comodore 64", category: "desktop", price: 4500 },
-    { id: 2, name: "Lentium 3", category: "desktop", price: 4500 },
-    { id: 3, name: "Celeron", category: "desktop", price: 4500 },
-    { id: 4, name: "AMD 3.4 Gigawats", category: "desktop", price: 4500 },
-    { id: 5, name: "Intel i9", category: "desktop", price: 4500 },
-    { id: 6, name: "Alienware", category: "notebook", price: 4500 }
-  ];
-
   useEffect(() => {
-    
-    const getProducts = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(productsPC);
-      }, 2000);
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let raw = JSON.stringify({
+      "user_id": 4995,
+      "token": "cjnk9xexr1p"
     });
 
-    getProducts.then((res) => {
-      if (idCategory) {
-        setProducts(res.filter((item) => item.category === idCategory))
-      } else {
-        setProducts(res);
-      }
-    })
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch(`https://clientes.elit.com.ar/v1/api/productos?subrubro=${idCategory}`, requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        let resultObj = JSON.parse(result);
+        setProducts(resultObj.resultado);
+      })
+      .catch(error => console.log('error', error));
 
   }, [idCategory])
-  
-
-
 
   return (
     <>
       <div className="text-center" style={{ backgroundColor: "orange" }}>
-          {greeting}
+        {greeting}
       </div>
-      <div>
-        {!products.length && "Loading..."}
-        {products.map((item) => (
-          <div key={item.id}>
-            {JSON.stringify(item)}
-            <br/>
-            <br/>
-          </div>
-        ))}
-      </div>
-      {/*<ItemCount />
-      <ItemList />
-      <Item />*/}
+      <ItemList products={products}/>
     </>
   )
 }

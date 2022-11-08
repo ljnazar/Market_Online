@@ -1,7 +1,20 @@
 import React from 'react'
+import Item from './Item';
 
-export default function ItemList() {
+export default function ItemList({products}) {
   return (
-    <div>ItemList</div>
+    <div>
+      {products ? (
+        <>
+          {products.map((product) => (
+            <Item product={product}/>
+          ))}
+        </>
+      ) : (
+        <>
+          Loading...
+        </>
+      )}
+    </div>
   )
 }
