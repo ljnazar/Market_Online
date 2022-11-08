@@ -68,42 +68,35 @@ export default function NavBar({ button , color}) {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <img
-                  className="block h-8 w-auto lg:hidden"
-                  src={logo}
-                  alt="logo"
-                />
-                <img
-                  className="hidden h-8 w-auto lg:block"
-                  src={logo}
-                  alt="logo"
-                />
+                <Link to={"/"}>
+                  <img
+                    className="block h-8 w-auto"
+                    src={logo}
+                    alt="logo"
+                  />
+                </Link>
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
                   {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                  <Link className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium"
-                    aria-current="page" to={"/"}>
-                    HOME
+                  <Link className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/pc"}>
+                    PCs de Escritorio
                   </Link>
-                  <a
-                    href="/checkout"
-                    className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    PAGO
-                  </a>
-                  <a
-                    href="/category/:nameCategory"
-                    className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
+                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/notebooks"}>
+                    Notebooks
+                  </Link>
+                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/monitores"}>
+                    Monitores
+                  </Link>
+                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/:idCategory"}>
                     CATEGORIA
-                  </a>
-                  <a
-                    href="../../public/index.html"
-                    className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Accesorios
-                  </a>
+                  </Link>
+                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/item/:idItem"}>
+                    ITEM
+                  </Link>
+                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/checkout"}>
+                    PAGO
+                  </Link>
                 </div>
               </div>
             </div>
