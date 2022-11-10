@@ -25,13 +25,23 @@ export default function ItemListContainer({greeting}) {
       redirect: 'follow'
     };
 
-    fetch(`https://clientes.elit.com.ar/v1/api/productos?subrubro=${idCategory}`, requestOptions)
+    if(idCategory) {
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?subrubro=${idCategory}`, requestOptions)
       .then(response => response.text())
       .then(result => {
         let resultObj = JSON.parse(result);
         setProducts(resultObj.resultado);
       })
       .catch(error => console.log('error', error));
+    } else {
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?limit=12`, requestOptions)
+      .then(response => response.text())
+      .then(result => {
+        let resultObj = JSON.parse(result);
+        setProducts(resultObj.resultado);
+      })
+      .catch(error => console.log('error', error));
+    }
 
   }, [idCategory])
 

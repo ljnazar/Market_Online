@@ -37,6 +37,6 @@ export default function ItemDetailContainer() {
     }, [idItem]);
 
   return (
-    <ItemDetail productDetail={product[0]}/>
+    <ItemDetail product={product[0]}/>
   )
 }

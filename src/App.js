@@ -16,7 +16,7 @@ export default function App() {
         <NavBar button={true} color={"#dddddd"}/>
 
         <Routes>
-          <Route path="/" element={<ItemListContainer greeting={"Bienvenido al Market Online de Oficom"} />} />
+          <Route path="/" element={<ItemListContainer greeting={"Bienvenido al Market Online de Oficom S.R.L"} />} />
           <Route path="/checkout" element={<Checkout />}/>
           <Route path="/category/:idCategory" element={<ItemListContainer />} />
           <Route path="/item/:idItem" element={<ItemDetailContainer />} />
