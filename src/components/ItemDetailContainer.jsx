@@ -26,7 +26,7 @@ export default function ItemDetailContainer() {
         redirect: 'follow'
       };
   
-      fetch(`https://clientes.elit.com.ar/v1/api/productos?cod_alfa=${idItem}`, requestOptions)
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?id=${idItem}`, requestOptions)
         .then(response => response.text())
         .then(result => {
           let resultObj = JSON.parse(result);

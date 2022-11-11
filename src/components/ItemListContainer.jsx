@@ -26,7 +26,7 @@ export default function ItemListContainer({greeting}) {
     };
 
     if(idCategory) {
-      fetch(`https://clientes.elit.com.ar/v1/api/productos?subrubro=${idCategory}`, requestOptions)
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?sub_categoria=${idCategory}`, requestOptions)
       .then(response => response.text())
       .then(result => {
         let resultObj = JSON.parse(result);

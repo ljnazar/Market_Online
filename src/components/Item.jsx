@@ -15,7 +15,7 @@ export default function Item({product}) {
           <li>Name: {product.nombre}</li>
           <li>Marca: {product.marca}</li>
           <li className="font-bold mt-2">Precio: {product.precio} USD</li>
-          <li className="font-bold m-2"><Link to={"/item/" + product.codigo_alfa}>IR AL ITEM</Link></li>
+          <li className="font-bold m-2"><Link to={"/item/" + product.id}>IR AL ITEM</Link></li>
         </ul>
 
       </div>
