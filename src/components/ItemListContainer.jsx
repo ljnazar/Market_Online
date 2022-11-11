@@ -31,6 +31,7 @@ export default function ItemListContainer({greeting}) {
       .then(result => {
         let resultObj = JSON.parse(result);
         setProducts(resultObj.resultado);
+        console.log(products);
       })
       .catch(error => console.log('error', error));
     } else {

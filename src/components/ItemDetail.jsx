@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount'
 
 export default function ItemDetail({product}) {
 
+  const [goToCart, setGoToCart] = useState(false);
+
   const onAdd = (quantity) => {
     console.log(`compraste: ${quantity} unidades`);
+    setGoToCart(true);
   }
 
   return (
@@ -28,7 +32,12 @@ export default function ItemDetail({product}) {
             <li className="font-bold mt-2">Precio: {product.precio} USD</li>
           </ul>
 
-          <ItemCount stockProduct={product.stock_total} onAdd={onAdd}/>
+          {
+            goToCart ? 
+            <Link to={"/checkout"}>Terminar Compra</Link> 
+            :
+            <ItemCount stockProduct={product.stock_total} onAdd={onAdd}/>
+          }
 
         </div>
       ) : (

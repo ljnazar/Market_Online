@@ -17,9 +17,9 @@ export default function App() {
 
         <Routes>
           <Route path="/" element={<ItemListContainer greeting={"Bienvenido al Market Online de Oficom S.R.L"} />} />
-          <Route path="/checkout" element={<Checkout />}/>
           <Route path="/category/:idCategory" element={<ItemListContainer />} />
           <Route path="/item/:idItem" element={<ItemDetailContainer />} />
+          <Route path="/checkout" element={<Checkout />}/>
           <Route />
         </Routes>
 
