@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
+import ItemCart from './ItemCart';
 import ItemDetail from './ItemDetail';
 
 
@@ -37,6 +38,9 @@ export default function ItemDetailContainer() {
     }, [idItem]);
 
   return (
-    <ItemDetail product={product[0]}/>
+    <>
+      <ItemDetail product={product[0]} />
+      {/* <ItemCart product={product[0]} /> */}
+    </>
   )
 }

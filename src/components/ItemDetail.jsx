@@ -1,14 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount'
+import { generalContext } from './ContextContainer';
 
-export default function ItemDetail({product}) {
+export default function ItemDetail({ product }) {
+
+  const {darkMode, addProduct} = useContext(generalContext);
 
   const [goToCart, setGoToCart] = useState(false);
 
   const onAdd = (quantity) => {
-    console.log(`compraste: ${quantity} unidades`);
     setGoToCart(true);
+    addProduct(product, quantity);
+    console.log(`compraste: ${quantity} unidades de ${product.nombre}`);
   }
 
   return (
@@ -17,11 +21,22 @@ export default function ItemDetail({product}) {
 
       {product ? (
 
-        <div className="flex-col w-60 m-8 border">
+        <div className="flex-col w-60 m-8 border"
+          style={{
+            color: darkMode ? "white" : "black",
+            backgroundColor: darkMode ? "black" : "white",
+            border: darkMode ? "2px solid white" : "2px solid black"
+          }}
+          key={product.id}
+        >
 
-          {console.log(product)}
+          {/* {console.log(product)} */}
 
-          <img src={product.imagenes[0]} />
+          <img src={product.imagenes[0]} 
+            style={{
+              backgroundColor: "transparent" && "white"
+            }}
+          />
 
           <ul className="text-center">
             <li>Id: {product.id}</li>
@@ -34,7 +49,7 @@ export default function ItemDetail({product}) {
 
           {
             goToCart ? 
-            <Link to={"/checkout"}>Terminar Compra</Link> 
+            <Link to={"/cart"}>Terminar Compra</Link>
             :
             <ItemCount stockProduct={product.stock_total} onAdd={onAdd}/>
           }

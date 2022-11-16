@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { generalContext } from './ContextContainer';
 
 export default function Item({product}) {
 
+  const {darkMode} = useContext(generalContext);
+
   return (
 
-      <div className="flex-col w-60 m-8 border">
+      <div 
+        className="flex-col w-60 m-8 border"
+        style={{
+          color: darkMode ? "white" : "black",
+          backgroundColor: darkMode ? "black" : "white",
+          border: darkMode ? "2px solid white" : "2px solid black"
+        }}
+        key={product.id}
+      >
 
-        {console.log(product)}
+        {/* {console.log(product)} */}
 
-        <img src={product.imagenes[0]} />
+        <img 
+          src={product.imagenes[0]} 
+          style={{
+            backgroundColor: "transparent" && "white"
+          }}
+        />
 
         <ul className="text-center">
-          <li>Name: {product.nombre}</li>
+          <li>Nombre: {product.nombre}</li>
           <li>Marca: {product.marca}</li>
           <li className="font-bold mt-2">Precio: {product.precio} USD</li>
           <li className="font-bold m-2"><Link to={"/item/" + product.id}>IR AL ITEM</Link></li>

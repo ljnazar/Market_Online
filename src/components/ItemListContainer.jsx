@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
+import { generalContext } from './ContextContainer';
 
 export default function ItemListContainer({greeting}) {
+
+  const {darkMode} = useContext(generalContext);
 
   const { idCategory } = useParams();
 
@@ -51,7 +54,13 @@ export default function ItemListContainer({greeting}) {
       <div className="text-center" style={{ backgroundColor: "orange" }}>
         {greeting}
       </div>
-      <ItemList products={products}/>
+      <div 
+            style={{
+              backgroundColor: darkMode ? "black" : "white"
+            }}
+      >
+        <ItemList products={products}/>
+      </div>
     </>
   )
 }

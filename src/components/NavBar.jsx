@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useContext }  from 'react';
 import CartWidget from './CartWidget'; 
 import '../output.css';
 import logo from '../logo.webp'
 import { Link } from 'react-router-dom';
+import { generalContext } from './ContextContainer';
 
-export default function NavBar({ button , color}) {
+export default function NavBar() {
 
-  /*const functionLogin = () => {
-    console.log("Login");
-  };*/ 
+  const {darkMode, setDarkMode} = useContext(generalContext);
 
   return (
     <>
@@ -88,13 +87,14 @@ export default function NavBar({ button , color}) {
                   <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/Monitores"}>
                     Monitores
                   </Link>
-                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/checkout"}>
+                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/cart"}>
                     Pago
                   </Link>
                 </div>
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <button onClick={() => setDarkMode(!darkMode)}>Dark Mode</button>
               <button
                 type="button"
                 className="rounded-full bg-gray-100 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -132,7 +132,7 @@ export default function NavBar({ button , color}) {
             <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/category/Monitores"}>
               Monitores
             </Link>
-            <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/checkout"}>
+            <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/cart"}>
               Pago
             </Link>
           </div>
