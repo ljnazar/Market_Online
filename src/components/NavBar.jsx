@@ -87,9 +87,6 @@ export default function NavBar() {
                   <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/Monitores"}>
                     Monitores
                   </Link>
-                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/cart"}>
-                    Pago
-                  </Link>
                 </div>
               </div>
             </div>
@@ -112,7 +109,9 @@ export default function NavBar() {
                     aria-haspopup="true"
                   >
                     <span className="sr-only">Open user menu</span>
-                    <CartWidget />
+                    <Link to={"/cart"}>
+                      <CartWidget />
+                    </Link>
                   </button>
                 </div>
               </div>
@@ -131,9 +130,6 @@ export default function NavBar() {
             </Link>
             <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/category/Monitores"}>
               Monitores
-            </Link>
-            <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/cart"}>
-              Pago
             </Link>
           </div>
         </div>
