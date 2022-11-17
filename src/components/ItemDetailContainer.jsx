@@ -1,16 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useParams } from 'react-router-dom';
-import ItemCart from './ItemCart';
 import ItemDetail from './ItemDetail';
-
+import { generalContext } from './ContextContainer';
+import Loader from './Loader';
 
 export default function ItemDetailContainer() {
+
+    const { darkMode, loader, setLoader } = useContext(generalContext);
 
     const { idItem } = useParams();
 
     const [product, setProduct] = useState({});
   
     useEffect(() => {
+
+      setLoader(true);
 
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -32,15 +36,24 @@ export default function ItemDetailContainer() {
         .then(result => {
           let resultObj = JSON.parse(result);
           setProduct(resultObj.resultado);
+          setLoader(false);
         })
         .catch(error => console.log('error', error));
 
     }, [idItem]);
 
+  if (loader)
+    return (
+      <Loader />
+    )
+
   return (
-    <>
+    <div 
+      style={{
+        backgroundColor: darkMode ? "black" : "white"
+      }}
+    >
       <ItemDetail product={product[0]} />
-      {/* <ItemCart product={product[0]} /> */}
-    </>
+    </div>
   )
 }

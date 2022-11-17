@@ -17,12 +17,12 @@ export default function ItemCount({stockProduct, onAdd}) {
         setCount(count - 1);
         setStock(stock + 1);
       }
-    }else if (count === 0){
+    }else if (count === 0 && initialStock !== 0){
       if(simbol === "+"){
         setCount(count + 1);
         setStock(stock - 1);
       }
-    }else if (count === initialStock){
+    }else if (count === initialStock && initialStock !== 0){
       if(simbol === "-"){
         setCount(count - 1);
         setStock(stock + 1);

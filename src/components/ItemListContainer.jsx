@@ -2,16 +2,19 @@ import React, {useState, useEffect, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import { generalContext } from './ContextContainer';
+import Loader from './Loader';
 
 export default function ItemListContainer({greeting}) {
 
-  const {darkMode} = useContext(generalContext);
+  const { darkMode, loader, setLoader } = useContext(generalContext);
 
   const { idCategory } = useParams();
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+
+    setLoader(true);
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -34,20 +37,26 @@ export default function ItemListContainer({greeting}) {
       .then(result => {
         let resultObj = JSON.parse(result);
         setProducts(resultObj.resultado);
-        console.log(products);
+        setLoader(false);
       })
       .catch(error => console.log('error', error));
     } else {
-      fetch(`https://clientes.elit.com.ar/v1/api/productos?limit=12`, requestOptions)
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?nombre=gamer`, requestOptions)
       .then(response => response.text())
       .then(result => {
         let resultObj = JSON.parse(result);
         setProducts(resultObj.resultado);
+        setLoader(false);
       })
       .catch(error => console.log('error', error));
     }
 
   }, [idCategory])
+
+  if (loader)
+    return (
+      <Loader />
+    )
 
   return (
     <>

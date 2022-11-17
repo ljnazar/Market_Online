@@ -19,47 +19,40 @@ export default function ItemDetail({ product }) {
 
     <div className="flex justify-center">
 
-      {product ? (
+      <div className="flex-col w-60 m-8 border"
+        style={{
+          color: darkMode ? "white" : "black",
+          backgroundColor: darkMode ? "black" : "white",
+          border: darkMode ? "2px solid white" : "2px solid black"
+        }}
+      >
 
-        <div className="flex-col w-60 m-8 border"
+        {/* {console.log(product)} */}
+
+        <img src={product.imagenes[0]} 
           style={{
-            color: darkMode ? "white" : "black",
-            backgroundColor: darkMode ? "black" : "white",
-            border: darkMode ? "2px solid white" : "2px solid black"
+            backgroundColor: "transparent" && "white"
           }}
-          key={product.id}
-        >
+        />
 
-          {/* {console.log(product)} */}
+        <ul className="text-center">
+          <li>Id: {product.id}</li>
+          <li>Categoria: {product.categoria}</li>
+          <li>Nombre: {product.nombre}</li>
+          <li>Marca: {product.marca}</li>
+          <li>Garantia: {product.garantia} meses</li>
+          <li className="font-bold mt-2">Precio: {product.precio} USD</li>
+        </ul>
 
-          <img src={product.imagenes[0]} 
-            style={{
-              backgroundColor: "transparent" && "white"
-            }}
-          />
+        {
+          goToCart ? 
+          <Link to={"/cart"}>Terminar Compra</Link>
+          :
+          <ItemCount stockProduct={product.stock_total} onAdd={onAdd}/>
+        }
 
-          <ul className="text-center">
-            <li>Id: {product.id}</li>
-            <li>Categoria: {product.categoria}</li>
-            <li>Nombre: {product.nombre}</li>
-            <li>Marca: {product.marca}</li>
-            <li>Garantia: {product.garantia} meses</li>
-            <li className="font-bold mt-2">Precio: {product.precio} USD</li>
-          </ul>
+      </div>
 
-          {
-            goToCart ? 
-            <Link to={"/cart"}>Terminar Compra</Link>
-            :
-            <ItemCount stockProduct={product.stock_total} onAdd={onAdd}/>
-          }
-
-        </div>
-      ) : (
-        <div>
-          Loading...
-        </div>
-      )}
     </div>
   )
 }
