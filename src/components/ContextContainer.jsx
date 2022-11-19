@@ -6,8 +6,6 @@ export default function ContextContainer( { children } ) {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  //const [loader, setLoader] = useState(true);
-
   const [cart, setCart] = useState([]);
 
   const clearCart = () => setCart([]);
@@ -33,10 +31,8 @@ export default function ContextContainer( { children } ) {
   return (
     <generalContext.Provider value={{
       darkMode,
-      //loader,
       cart,
       setDarkMode,
-      //setLoader,
       clearCart, 
       isInCart,
       removeProduct,

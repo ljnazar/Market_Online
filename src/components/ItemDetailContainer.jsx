@@ -6,10 +6,6 @@ import Loader from './Loader';
 
 export default function ItemDetailContainer() {
 
-    console.log("dentro de ItemDetailContainer");
-
-    //const { darkMode, loader, setLoader } = useContext(generalContext);
-
     const { darkMode } = useContext(generalContext);
 
     const [loader, setLoader] = useState(true);
@@ -17,12 +13,8 @@ export default function ItemDetailContainer() {
     const { idItem } = useParams();
 
     const [product, setProduct] = useState({});
-
-    console.log(loader);
     
     useEffect(() => {
-      
-      console.log("dentro de ItemDetailContainer useEffect");
 
       let myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -53,7 +45,6 @@ export default function ItemDetailContainer() {
   if (loader)
     return (
       <>
-      {console.log("return loader")}
       <Loader />
       </>
   )
@@ -64,7 +55,6 @@ export default function ItemDetailContainer() {
         backgroundColor: darkMode ? "black" : "white"
       }}
     >
-      {console.log("return ItemDetail")}
       <ItemDetail product={product[0]} />
     </div>
   )

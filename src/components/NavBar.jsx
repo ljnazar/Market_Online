@@ -135,8 +135,6 @@ export default function NavBar() {
         </div>
       </nav>
 
-      {/* button ? <button onClick={ () => functionLogin() }>LOGIN</button>: null */}
-
     </>
   )
 }

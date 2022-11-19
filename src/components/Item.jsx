@@ -1,15 +1,10 @@
-import React, { useEffect, useContext} from 'react';
+import React, { useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { generalContext } from './ContextContainer';
 
 export default function Item({product}) {
 
-  const { darkMode, setLoader } = useContext(generalContext);
-
-  // useEffect(() => {
-  //   /* changed value default to true */
-  //   setLoader(true);
-  // }, [])
+  const { darkMode } = useContext(generalContext);
 
   return (
 
@@ -22,13 +17,10 @@ export default function Item({product}) {
       }}
       key={product.id}
     >
-
-      {/*PASAR ESE STYLE A TAILWIND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/}
+      
       <img 
-        src={product.imagenes[0] || "/without-img2.png"} 
-        style={{
-          backgroundColor: "white"
-        }}
+        src={product.imagenes[0] || "/without-img.png"}
+        className="bg-white"
       />
 
       <ul className="text-center">

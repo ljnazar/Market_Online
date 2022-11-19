@@ -6,8 +6,6 @@ import Loader from './Loader';
 
 export default function ItemListContainer({greeting}) {
 
-  //const { darkMode, loader, setLoader } = useContext(generalContext);
-
   const { darkMode } = useContext(generalContext);
 
   const [loader, setLoader] = useState(true);
