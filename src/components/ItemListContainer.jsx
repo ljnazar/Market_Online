@@ -6,7 +6,11 @@ import Loader from './Loader';
 
 export default function ItemListContainer({greeting}) {
 
-  const { darkMode, loader, setLoader } = useContext(generalContext);
+  //const { darkMode, loader, setLoader } = useContext(generalContext);
+
+  const { darkMode } = useContext(generalContext);
+
+  const [loader, setLoader] = useState(true);
 
   const { idCategory } = useParams();
 
@@ -41,7 +45,7 @@ export default function ItemListContainer({greeting}) {
       })
       .catch(error => console.log('error', error));
     } else {
-      fetch(`https://clientes.elit.com.ar/v1/api/productos?nombre=gamer`, requestOptions)
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?nombre=monitor`, requestOptions)
       .then(response => response.text())
       .then(result => {
         let resultObj = JSON.parse(result);
@@ -64,9 +68,9 @@ export default function ItemListContainer({greeting}) {
         {greeting}
       </div>
       <div 
-            style={{
-              backgroundColor: darkMode ? "black" : "white"
-            }}
+        style={{
+          backgroundColor: darkMode ? "black" : "white"
+        }}
       >
         <ItemList products={products}/>
       </div>

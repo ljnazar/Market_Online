@@ -19,6 +19,12 @@ export default function ItemDetail({ product }) {
 
     <div className="flex justify-center">
 
+
+
+      {/* {product ? ( */}
+
+
+
       <div className="flex-col w-60 m-8 border"
         style={{
           color: darkMode ? "white" : "black",
@@ -27,11 +33,12 @@ export default function ItemDetail({ product }) {
         }}
       >
 
-        {/* {console.log(product)} */}
+        {console.log("Dentro de ItemDetail")}
 
-        <img src={product.imagenes[0]} 
+        {/*PASAR ESE STYLE A TAILWIND!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/}
+        <img src={product.imagenes[0] || "/without-img2.png"}
           style={{
-            backgroundColor: "transparent" && "white"
+            backgroundColor: "white"
           }}
         />
 
@@ -52,6 +59,18 @@ export default function ItemDetail({ product }) {
         }
 
       </div>
+
+
+
+
+      {/* ) : (
+        <div>
+          Loading...
+        </div>
+      )} */}
+
+
+
 
     </div>
   )

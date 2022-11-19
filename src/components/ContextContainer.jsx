@@ -1,4 +1,4 @@
-import React, { useState, createContext  } from 'react'
+import React, { useState, createContext } from 'react'
 
 export const generalContext = createContext([]);
 
@@ -6,7 +6,7 @@ export default function ContextContainer( { children } ) {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  const [loader, setLoader] = useState(true);
+  //const [loader, setLoader] = useState(true);
 
   const [cart, setCart] = useState([]);
 
@@ -33,10 +33,10 @@ export default function ContextContainer( { children } ) {
   return (
     <generalContext.Provider value={{
       darkMode,
-      loader,
+      //loader,
       cart,
       setDarkMode,
-      setLoader,
+      //setLoader,
       clearCart, 
       isInCart,
       removeProduct,
