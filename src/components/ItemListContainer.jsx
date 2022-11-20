@@ -37,8 +37,10 @@ export default function ItemListContainer() {
       fetch(`https://clientes.elit.com.ar/v1/api/productos?sub_categoria=${idCategory}`, requestOptions)
       .then(response => response.text())
       .then(result => {
-        let resultObj = JSON.parse(result);
-        setProducts(resultObj.resultado);
+        const resultObj = JSON.parse(result);
+        const products = resultObj.resultado;
+        const productsWithStock = [...products].filter(product => product.stock_total !== 0)
+        setProducts(productsWithStock);
         setLoader(false);
       })
       .catch(error => console.log('error', error));
@@ -46,8 +48,10 @@ export default function ItemListContainer() {
       fetch(`https://clientes.elit.com.ar/v1/api/productos?nombre=gamer`, requestOptions)
       .then(response => response.text())
       .then(result => {
-        let resultObj = JSON.parse(result);
-        setProducts(resultObj.resultado);
+        const resultObj = JSON.parse(result);
+        const products = resultObj.resultado;
+        const productsWithStock = [...products].filter(product => product.stock_total !== 0)
+        setProducts(productsWithStock);
         setLoader(false);
       })
       .catch(error => console.log('error', error));
