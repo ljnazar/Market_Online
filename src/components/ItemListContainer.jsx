@@ -2,9 +2,9 @@ import React, {useState, useEffect, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
 import { generalContext } from './ContextContainer';
-import Loader from './Loader';
+import LoaderSkeleton from './LoaderSkeleton';
 
-export default function ItemListContainer({greeting}) {
+export default function ItemListContainer() {
 
   const { darkMode } = useContext(generalContext);
 
@@ -43,7 +43,7 @@ export default function ItemListContainer({greeting}) {
       })
       .catch(error => console.log('error', error));
     } else {
-      fetch(`https://clientes.elit.com.ar/v1/api/productos?nombre=monitor`, requestOptions)
+      fetch(`https://clientes.elit.com.ar/v1/api/productos?nombre=gamer`, requestOptions)
       .then(response => response.text())
       .then(result => {
         let resultObj = JSON.parse(result);
@@ -57,21 +57,16 @@ export default function ItemListContainer({greeting}) {
 
   if (loader)
     return (
-      <Loader />
+      <LoaderSkeleton />
     )
 
   return (
-    <>
-      <div className="text-center" style={{ backgroundColor: "orange" }}>
-        {greeting}
-      </div>
-      <div 
-        style={{
-          backgroundColor: darkMode ? "black" : "white"
-        }}
-      >
-        <ItemList products={products}/>
-      </div>
-    </>
+    <div 
+      style={{
+        backgroundColor: darkMode ? "black" : "white"
+      }}
+    >
+      <ItemList products={products}/>
+    </div>
   )
 }

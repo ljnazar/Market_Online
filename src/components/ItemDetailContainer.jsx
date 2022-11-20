@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import { generalContext } from './ContextContainer';
-import Loader from './Loader';
+import LoaderSpiner from './LoaderSpiner';
 
 export default function ItemDetailContainer() {
 
@@ -44,9 +44,7 @@ export default function ItemDetailContainer() {
       
   if (loader)
     return (
-      <>
-      <Loader />
-      </>
+      <LoaderSpiner />
   )
       
   return (

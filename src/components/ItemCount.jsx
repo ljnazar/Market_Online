@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ItemCount({stockProduct, onAdd}) {
 
@@ -57,7 +58,7 @@ export default function ItemCount({stockProduct, onAdd}) {
       <div className="flex justify-center space-x-2 text-sm font-medium p-2 mb-2">
         <button disabled={count === 0} onClick={() => onAdd(count)} className="px-6 h-12 tracking-wider border border-slate-200 text-slate-900 active:font-bold active:border-2 active:border-black active:before:bg-teal-400 hover:bg-teal-400" type="button">
           <span className={(count >= 1) ? "font-bold" : "font-semibold"}>
-            ADD TO CART
+            <Link to={"/cart"}>ADD TO CART</Link>
           </span>
         </button>
         <button className="flex-none flex items-center justify-center w-12 h-12 text-black" type="button" aria-label="Like">

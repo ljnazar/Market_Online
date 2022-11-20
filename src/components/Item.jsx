@@ -9,24 +9,23 @@ export default function Item({product}) {
   return (
 
     <div 
-      className="flex-col w-60 m-8 border"
+      className="flex flex-col w-60 m-8 border"
       style={{
         color: darkMode ? "white" : "black",
-        backgroundColor: darkMode ? "black" : "white",
         border: darkMode ? "2px solid white" : "2px solid black"
       }}
       key={product.id}
     >
-      
+
       <img 
         src={product.imagenes[0] || "/without-img.png"}
         className="bg-white"
       />
 
-      <ul className="text-center">
-        <li>Nombre: {product.nombre}</li>
-        <li>Marca: {product.marca}</li>
-        <li className="font-bold mt-2">Precio: {product.precio} USD</li>
+      <ul className="text-center p-2 my-auto">
+        <li className="font-semibold">{product.nombre}</li>
+        <li className="font-semibold mt-2">Marca: {product.marca}</li>
+        <li className="font-semibold mt-2">Precio: {product.precio} USD</li>
         <li className="font-bold m-2"><Link to={"/item/" + product.id}>IR AL ITEM</Link></li>
       </ul>
 

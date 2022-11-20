@@ -3,20 +3,34 @@ import { generalContext } from './ContextContainer'
 
 export default function ItemCart({ product }) {
 
-  console.log(product);
-
-  const {removeProduct} = useContext(generalContext);
+  const {darkMode, removeProduct} = useContext(generalContext);
 
   return (
-    <div className='flex border max-w-2xl m-10'>
-        <img src={product.imagenes[0]} alt={product.name} />
-        <div>
-            <p>Nombre: {product.nombre}</p>
-            <p>Cantidad: {product.quantity}</p>
-            <p>Precio Unidad: {product.precio}</p>
-            <p>subtotal: {product.quantity * product.precio}</p>
-            <button onClick={() => removeProduct(product.id)}>Eliminar</button>
-        </div>
+
+    <div className="flex flex-col w-60 m-8 border"
+    
+      style={{
+        color: darkMode ? "white" : "black",
+        backgroundColor: darkMode ? "black" : "white",
+        border: darkMode ? "2px solid white" : "2px solid black"
+      }}
+    >
+
+      <img 
+        src={product.imagenes[0] || "/without-img.png"}
+        className="bg-white"
+      />
+
+      <ul className="text-center p-2 my-auto">
+        <li className="font-semibold">{product.nombre}</li>
+        <li className="font-semibold mt-2">Cantidad: {product.quantity}</li>
+        <li className="font-semibold mt-2">Precio Unidad: {product.precio} USD</li>
+        <li className="font-bold mt-2">subtotal: {product.quantity * product.precio} USD</li>
+      </ul>
+
+      <button onClick={() => removeProduct(product.id)}>Eliminar</button>
+
     </div>
+
   )
 }

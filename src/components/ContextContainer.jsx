@@ -24,9 +24,9 @@ export default function ContextContainer( { children } ) {
     }
   }
 
-  const totalPrice = () => cart.reduce((previous, current) => previous + current.quantity * current.price, 0);
-
   const totalProducts = () => cart.reduce((previous, current) => previous + current.quantity, 0);
+
+  const totalPrice = () => cart.reduce((previous, current) => previous + current.quantity * current.precio, 0);
 
   return (
     <generalContext.Provider value={{

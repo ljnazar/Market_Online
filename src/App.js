@@ -5,7 +5,7 @@ import ItemListContainer from './components/ItemListContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ContextContainer from './components/ContextContainer';
-import Cart from './components/Cart';
+import CartList from './components/CartList';
 
 export default function App() {
 
@@ -14,10 +14,10 @@ export default function App() {
       <BrowserRouter>
           <NavBar button={true} color={"#dddddd"} />
           <Routes>
-            <Route path="/" element={<ItemListContainer greeting={"Bienvenido al Market Online de Oficom S.R.L"} />} />
+            <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:idCategory" element={<ItemListContainer />} />
             <Route path="/item/:idItem" element={<ItemDetailContainer />} />
-            <Route path="/cart" element={<Cart />}/>
+            <Route path="/cart" element={<CartList />}/>
             <Route />
           </Routes>
       </BrowserRouter>
