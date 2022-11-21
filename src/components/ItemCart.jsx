@@ -25,7 +25,7 @@ export default function ItemCart({ product }) {
         <li className="font-semibold">{product.nombre}</li>
         <li className="font-semibold mt-2">Cantidad: {product.quantity}</li>
         <li className="font-semibold mt-2">Precio Unidad: {product.precio} USD</li>
-        <li className="font-bold mt-2">subtotal: {product.quantity * product.precio} USD</li>
+        <li className="font-bold mt-2">subtotal: {Math.round((product.quantity * product.precio) * 100)/100} USD</li>
       </ul>
 
       <button onClick={() => removeProduct(product.id)}>Eliminar</button>

@@ -32,11 +32,12 @@ export default function ItemDetailContainer() {
       };
       
       fetch(`https://clientes.elit.com.ar/v1/api/productos?id=${idItem}`, requestOptions)
-      .then(response => response.text())
-      .then(result => {
-        let resultObj = JSON.parse(result);
-        setProduct(resultObj.resultado);
-        setLoader(false);
+        .then(response => response.text())
+        .then(result => {
+          const resultObj = JSON.parse(result);
+          const products = resultObj.resultado;
+          setProduct(products);
+          setLoader(false);
         })
         .catch(error => console.log('error', error));
         
