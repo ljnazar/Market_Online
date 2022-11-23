@@ -70,7 +70,7 @@ export default function ItemCount({ product }) {
 
       <div className="flex justify-center space-x-2 text-sm font-medium p-2 mb-2">
         <button onClick={() => onAdd(count)} className="px-6 h-12 tracking-wider border border-slate-200 text-slate-900 active:font-bold active:border-2 active:border-black active:before:bg-teal-400 hover:bg-teal-400" type="button">
-          <Link style={{pointerEvents: !count ? 'none' : ''}} to={!count || '/cart'} className={count ? "font-bold" : "font-semibold"}>
+          <Link style={{pointerEvents: count ? '' : 'none'}} to={!count || '/cart'} className={count ? "font-bold" : "font-semibold"}>
             ADD TO CART
           </Link>
         </button>
