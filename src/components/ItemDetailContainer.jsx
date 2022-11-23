@@ -50,9 +50,7 @@ export default function ItemDetailContainer() {
       
   return (
     <div 
-      style={{
-        backgroundColor: darkMode ? "black" : "white"
-      }}
+      className={darkMode ? "bg-neutral-800" : "bg-white"}
     >
       <ItemDetail product={product[0]} />
     </div>

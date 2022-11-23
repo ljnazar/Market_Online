@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { generalContext } from './ContextContainer'
+import React, { useContext } from 'react';
+import { generalContext } from './ContextContainer';
 
 export default function ItemCart({ product }) {
 

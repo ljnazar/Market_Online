@@ -1,9 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { generalContext } from './ContextContainer';
 
-export default function ItemCount({stockProduct, onAdd}) {
+export default function ItemCount({ product }) {
 
-  const initialStock = stockProduct;
+  const {darkMode, cart, addProduct} = useContext(generalContext);
+
+  let initialStock = product.stock_total;
+
+  const realStock = () => {
+    cart.map(productCart => {
+      if(productCart.nombre === product.nombre) {
+        initialStock = product.stock_total - productCart.quantity;
+      }
+    })
+  }
+
+  realStock();
 
   const [stock, setStock] = useState(initialStock);
 
@@ -31,9 +44,9 @@ export default function ItemCount({stockProduct, onAdd}) {
     }
   };
 
-  useEffect( () => {
-    console.log("modified stock");
-  },[stock]);
+  const onAdd = (quantity) => {
+    (!quantity) || addProduct(product, quantity);
+  }
 
   return (
 
@@ -56,16 +69,10 @@ export default function ItemCount({stockProduct, onAdd}) {
       </div>
 
       <div className="flex justify-center space-x-2 text-sm font-medium p-2 mb-2">
-        <button disabled={count === 0} onClick={() => onAdd(count)} className="px-6 h-12 tracking-wider border border-slate-200 text-slate-900 active:font-bold active:border-2 active:border-black active:before:bg-teal-400 hover:bg-teal-400" type="button">
-        {(count >= 1) ? 
-          (<span className="font-bold">
-            <Link to={"/cart"}>ADD TO CART</Link>
-          </span>)
-        :
-          (<span className="font-semibold">
+        <button onClick={() => onAdd(count)} className="px-6 h-12 tracking-wider border border-slate-200 text-slate-900 active:font-bold active:border-2 active:border-black active:before:bg-teal-400 hover:bg-teal-400" type="button">
+          <Link to={!count || '/cart'} className={count ? "font-bold" : "font-semibold"}>
             ADD TO CART
-          </span>)
-        }
+          </Link>
         </button>
         <button className="flex-none flex items-center justify-center w-12 h-12 text-black" type="button" aria-label="Like">
           <svg width={20} height={20} fill="currentColor" aria-hidden="true">

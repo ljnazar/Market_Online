@@ -1,32 +1,25 @@
-import React, {useState, useContext} from 'react'
+import React, { useContext } from 'react'
 import ItemCount from './ItemCount'
 import { generalContext } from './ContextContainer';
 
 export default function ItemDetail({ product }) {
 
-  const {darkMode, addProduct} = useContext(generalContext);
-
-  const [goToCart, setGoToCart] = useState(false);
-
-  const onAdd = (quantity) => {
-    setGoToCart(true);
-    addProduct(product, quantity);
-  }
+  const { darkMode } = useContext(generalContext);
 
   return (
 
     <div className="flex justify-center">
 
       <div className="flex flex-col w-60 m-8 border"
-        style={{
-          color: darkMode ? "white" : "black",
-          border: darkMode ? "2px solid white" : "2px solid black"
-        }}
+      style={{
+        color: darkMode ? "white" : "black",
+        border: darkMode ? "2px solid white" : "2px solid black"
+      }}
       >
 
         <img 
-          src={product.imagenes[0] || "/without-img.png"}
-          className="bg-white"
+        src={product.imagenes[0] || "/without-img.png"}
+        className="bg-white"
         />
 
         <ul className="text-center p-2 my-auto">
@@ -36,10 +29,11 @@ export default function ItemDetail({ product }) {
           <li className="font-bold mt-2">Precio: {product.precio} USD</li>
         </ul>
 
-        <ItemCount stockProduct={product.stock_total} onAdd={onAdd}/>
+        <ItemCount product={product} />
 
       </div>
-      
+
     </div>
+
   )
 }
