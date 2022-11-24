@@ -19,6 +19,7 @@ export default function ItemCart({ product }) {
       <img 
         src={product.imagenes[0] || "/without-img.png"}
         className="bg-white"
+        alt="img"
       />
 
       <ul className="text-center p-2 my-auto">
