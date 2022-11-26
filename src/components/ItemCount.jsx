@@ -69,11 +69,11 @@ export default function ItemCount({ product }) {
       </div>
 
       <div className="flex justify-center space-x-2 text-sm font-medium p-2 mb-2">
-        <button onClick={() => onAdd(count)} className="px-6 h-12 tracking-wider border border-slate-200 text-slate-900 active:font-bold active:border-2 active:border-black active:before:bg-teal-400 hover:bg-teal-400" type="button">
-          <Link style={{pointerEvents: count ? '' : 'none'}} to={!count || '/cart'} className={count ? "font-bold" : "font-semibold"}>
+        <Link style={{pointerEvents: count ? '' : 'none'}} to={!count || '/cart'} className={count ? "font-bold" : "font-semibold"}>
+          <button onClick={() => onAdd(count)} className="px-6 h-12 tracking-wider border border-slate-200 text-slate-900 active:font-bold active:border-2 active:border-black active:before:bg-teal-400 hover:bg-teal-400" type="button">
             ADD TO CART
-          </Link>
-        </button>
+          </button>
+        </Link>
         <button className="flex-none flex items-center justify-center w-12 h-12 text-black" type="button" aria-label="Like">
           <svg width={20} height={20} fill="currentColor" aria-hidden="true">
             <path fillRule="evenodd" clipRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
