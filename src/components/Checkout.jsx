@@ -26,12 +26,22 @@ export default function Checkout() {
 
       const db = getFirestore();
       const ordersCollection = collection(db, 'orders');
+      // Realizar validaciones
+      if(!nombre || !email || !tel || !dir){
+        return
+      }else if(false){
+        return
+      }else{
+
       addDoc(ordersCollection, order)
         .then(({ id }) => {
           console.log(id);
+          // Mostrar ID de pedido en pantalla
+          // Sacar botón de enviar pedido 
         })
         .catch(error => console.log('error', error));
 
+      }
     };
 
   return (

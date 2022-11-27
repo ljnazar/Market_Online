@@ -1,6 +1,5 @@
-import React, { useContext }  from 'react';
+import React, { useState, useContext }  from 'react';
 import CartWidget from './CartWidget'; 
-import '../output.css';
 import logo from '../logo.webp';
 import { Link } from 'react-router-dom';
 import { generalContext } from './ContextContainer';
@@ -8,6 +7,16 @@ import { generalContext } from './ContextContainer';
 export default function NavBar() {
 
   const {darkMode, setDarkMode} = useContext(generalContext);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleEscape = (e) => {
+    if (e.key === 'Esc' || e.key === 'Escape'){
+      setIsOpen(false);
+    }
+  }
+
+  document.addEventListener('keydown', handleEscape);
 
   return (
     <>
@@ -19,7 +28,7 @@ export default function NavBar() {
               <div className="flex flex-shrink-0 items-center">
                 <Link to={"/"}>
                   <img
-                    className="block h-8 w-auto"
+                    className="block h-8 w-8"
                     src={logo}
                     alt="logo"
                   />
@@ -27,28 +36,52 @@ export default function NavBar() {
               </div>
 
 
-
-
-              
-              
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">
 
-                  <Link className="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/Auriculares"}>
-                    Auriculares
-                  </Link>
-                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/Parlantes"}>
-                    Parlantes
-                  </Link>
-                  <Link className="text-gray-800 hover:bg-gray-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium" to={"/category/Monitores"}>
-                    Monitores
-                  </Link>
+                  <div className="relative">
+                  <button 
+                    className="relative z-10 px-3 py-2 bg-white rounded-md text-gray-800 hover:bg-gray-600 hover:text-white text-sm font-medium inline-flex items-center" 
+                    onClick={() => setIsOpen(!isOpen)}>
+                        Categorias 
+                        <svg className="ml-2 mt-1 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                  </button>
+                  <button 
+                    className={isOpen ? "fixed inset-0 h-full w-full bg-black opacity-50 cursor-default" : ""}
+                    onClick={() => setIsOpen(false)}
+                  >
+                  </button>
+
+                  <div className={isOpen ? "absolute px-3 py-2 mt-2 bg-white rounded-lg shadow-xl" : "hidden"}>
+                    <Link 
+                      onClick={() => setIsOpen(false)}
+                      to={"/category/Auriculares"}
+                      className="block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium"
+                    >
+                      Auriculares
+                    </Link>
+                    <Link 
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-2  text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Parlantes"}>
+                      Parlantes
+                    </Link>
+                    <Link 
+                    onClick={() => setIsOpen(false)}
+                    className="block px-3 py-2  text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Monitores"}>
+                      Monitores
+                    </Link>
+                  </div>
+
+                  </div>
+
                 </div>
               </div>
 
             </div>
 
-            <div className="absolute inset-y-0 right-0 flex items-center">
+            <div className="flex items-center">
               <button
                 type="button"
                 className="rounded-full bg-gray-100 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
