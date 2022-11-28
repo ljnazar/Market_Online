@@ -67,9 +67,7 @@ export default function ItemListContainer() {
 
   return (
     <div 
-      style={{
-        backgroundColor: darkMode ? "black" : "white"
-      }}
+      className={"pt-20 " + (darkMode ? "bg-neutral-800" : "bg-gray-100")}
     >
       <ItemList products={products}/>
     </div>

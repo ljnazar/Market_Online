@@ -7,13 +7,8 @@ export default function ItemCart({ product }) {
 
   return (
 
-    <div className="flex flex-col w-60 m-8 border"
-    
-      style={{
-        color: darkMode ? "white" : "black",
-        backgroundColor: darkMode ? "black" : "white",
-        border: darkMode ? "2px solid white" : "2px solid black"
-      }}
+    <div 
+    className={"flex flex-col w-60 mx-8 my-6 border-2 " + (darkMode ? "bg-neutral-800 text-white border-white" : "bg-gray-100 text-black border-black")}
     >
 
       <img 

@@ -21,7 +21,8 @@ export default function NavBar() {
   return (
     <>
 
-      <nav className="bg-gray-100">
+      <nav className={"fixed top-0 w-full border-2 " + (darkMode ? "bg-zinc-300" : "bg-white")}>
+
         <div className="mx-auto max-w-7xl px-4 sm:px-8 md:px-8 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex justify-start">
@@ -41,7 +42,7 @@ export default function NavBar() {
 
                   <div className="relative">
                   <button 
-                    className="relative z-10 px-3 py-2 bg-white rounded-md text-gray-800 hover:bg-gray-600 hover:text-white text-sm font-medium inline-flex items-center" 
+                    className={"relative z-10 px-3 py-2 rounded-md text-gray-800 hover:bg-gray-600 hover:text-white text-sm font-medium inline-flex items-center " + (darkMode ? "bg-zinc-300" : "bg-white")} 
                     onClick={() => setIsOpen(!isOpen)}>
                         Categorias 
                         <svg className="ml-2 mt-1 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +55,7 @@ export default function NavBar() {
                   >
                   </button>
 
-                  <div className={isOpen ? "absolute px-3 py-2 mt-2 bg-white rounded-lg shadow-xl" : "hidden"}>
+                  <div className={isOpen ? "absolute px-3 py-2 mt-2 bg-white rounded-md shadow-xl" : "hidden"}>
                     <Link 
                       onClick={() => setIsOpen(false)}
                       to={"/category/Auriculares"}
@@ -64,12 +65,12 @@ export default function NavBar() {
                     </Link>
                     <Link 
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2  text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Parlantes"}>
+                    className="block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Parlantes"}>
                       Parlantes
                     </Link>
                     <Link 
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2  text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Monitores"}>
+                    className="block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Monitores"}>
                       Monitores
                     </Link>
                   </div>
@@ -82,10 +83,7 @@ export default function NavBar() {
             </div>
 
             <div className="flex items-center">
-              <button
-                type="button"
-                className="rounded-full bg-gray-100 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              >
+              <button>
                 <div>🔎</div>
               </button>
               <button className="w-6 ml-2" onClick={() => setDarkMode(!darkMode)}>
@@ -100,14 +98,7 @@ export default function NavBar() {
                 }
               </button>
 
-              <button
-                type="button"
-                className="ml-2 flex rounded-full bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                id="user-menu-button"
-                aria-expanded="false"
-                aria-haspopup="true"
-              >
-                <span className="sr-only">Open user menu</span>
+              <button className="ml-2 flex">
                 <Link to={"/cart"}>
                   <CartWidget />
                 </Link>
@@ -115,15 +106,15 @@ export default function NavBar() {
             </div>
           </div>
         </div>
-        <div className="sm:hidden" id="mobile-menu">
+        <div className="sm:hidden">
           <div className="space-y-1 px-2 pt-2 pb-3">
-            <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/category/Auriculares"}>
+            <Link className=" block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Auriculares"}>
               Auriculares
             </Link>
-            <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/category/Parlantes"}>
+            <Link className="block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Parlantes"}>
               Parlantes
             </Link>
-            <Link className="bg-gray-600 text-white block px-3 py-2 rounded-md text-base font-medium" to={"/category/Monitores"}>
+            <Link className="block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Monitores"}>
               Monitores
             </Link>
           </div>

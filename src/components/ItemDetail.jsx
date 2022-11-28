@@ -10,11 +10,8 @@ export default function ItemDetail({ product }) {
 
     <div className="flex justify-center">
 
-      <div className="flex flex-col w-60 m-8 border"
-      style={{
-        color: darkMode ? "white" : "black",
-        border: darkMode ? "2px solid white" : "2px solid black"
-      }}
+      <div 
+        className={"flex flex-col w-60 mx-8 my-6 border-2 " + (darkMode ? "text-white border-white" : "text-black border-black")}
       >
 
         <img 

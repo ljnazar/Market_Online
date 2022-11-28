@@ -50,7 +50,7 @@ export default function ItemDetailContainer() {
       
   return (
     <div 
-      className={darkMode ? "bg-neutral-800" : "bg-white"}
+      className={"pt-20 " + (darkMode ? "bg-neutral-800" : "bg-gray-100")}
     >
       <ItemDetail product={product[0]} />
     </div>

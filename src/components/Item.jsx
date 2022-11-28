@@ -9,17 +9,13 @@ export default function Item({product}) {
   return (
 
     <div 
-      className="flex flex-col w-60 m-8 border"
-      style={{
-        color: darkMode ? "white" : "black",
-        border: darkMode ? "2px solid white" : "2px solid black"
-      }}
+      className={"flex flex-col w-60 mx-8 my-6 border-2 " + (darkMode ? "text-white border-white" : "text-black border-black")}
       key={product.id}
     >
 
       <img 
         src={product.imagenes[0] || "/without-img.png"}
-        className="bg-white"
+        className="bg-white border-2"
         alt="img"
       />
 

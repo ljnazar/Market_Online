@@ -1,6 +1,7 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React, { useState, useContext } from 'react';
 import { generalContext } from './ContextContainer';
+import { Link } from 'react-router-dom';
 
 export default function Checkout() {
 
@@ -45,7 +46,7 @@ export default function Checkout() {
     };
 
   return (
-    <div className={darkMode ? "bg-neutral-800" : "bg-white"}>
+    <div className={"pt-20 " + (darkMode ? "bg-neutral-800 text-white" : "bg-gray-100 text-black")}>
       {cart.map((item) => (
         <p>{item.quantity + " " + item.nombre + " " + item.precio}</p>
       ))}
@@ -58,7 +59,9 @@ export default function Checkout() {
         <input placeholder="Dirección" value={dir} onChange={(e) => setDir(e.target.value)}/>
       </div>
       <button onClick={handleFirebase}>Enviar pedido</button>
-      <button>Volver al carrito</button>
+      <div>
+      <Link to={'/cart'}>Volver al carrito</Link>
+      </div>
     </div>
   )
 }

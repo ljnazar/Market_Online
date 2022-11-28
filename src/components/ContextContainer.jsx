@@ -4,7 +4,7 @@ export const generalContext = createContext([]);
 
 export default function ContextContainer( { children } ) {
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkMode')) || false);
 
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
@@ -27,11 +27,14 @@ export default function ContextContainer( { children } ) {
   const totalProducts = () => cart.reduce((previous, current) => previous + current.quantity, 0);
 
   const totalPrice = () => cart.reduce((previous, current) => previous + current.quantity * current.precio, 0);
+  
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode])
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart))
+    localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart])
-  
 
   return (
     <generalContext.Provider value={{

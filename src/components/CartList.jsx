@@ -17,23 +17,25 @@ export default function Cart() {
   }
 
   return (
-    <div className={darkMode ? "bg-neutral-800" : "bg-white"}>
+    <div className={"pt-20 " + (darkMode ? "bg-neutral-800 text-white" : "bg-gray-100 text-black")}>
       <div className="flex justify-center flex-wrap">
         {
           cart.map(product => <ItemCart product={product} />)
         }
       </div>
-      <p>
-        Cantidad de productos: { totalProducts() }
-      </p>
-      <p>
-        Total: { Math.round(totalPrice() * 100)/100 } USD
-      </p>
       <div>
-      <Link to={'/'}>Seguir comprando</Link>
-      </div>
-      <div>
-      <Link to={'/checkout'}>Finalizar compra</Link>
+        <p>
+          Cantidad de productos: { totalProducts() }
+        </p>
+        <p>
+          Total: { Math.round(totalPrice() * 100)/100 } USD
+        </p>
+        <div>
+        <Link to={'/'}>Seguir comprando</Link>
+        </div>
+        <div>
+        <Link to={'/checkout'}>Finalizar compra</Link>
+        </div>
       </div>
     </div>
   )
