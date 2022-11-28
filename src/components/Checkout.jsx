@@ -31,14 +31,15 @@ export default function Checkout() {
       if(!nombre || !email || !tel || !dir){
         return
       }else if(false){
-        return
+        console.log("");
       }else{
 
       addDoc(ordersCollection, order)
         .then(({ id }) => {
           console.log(id);
           // Mostrar ID de pedido en pantalla
-          // Sacar botón de enviar pedido 
+          // Sacar botón de enviar pedido
+          // Borrar carrito 
         })
         .catch(error => console.log('error', error));
 
@@ -58,10 +59,8 @@ export default function Checkout() {
         <input placeholder="Telefono" value={tel} onChange={(e) => setTel(e.target.value)}/>
         <input placeholder="Dirección" value={dir} onChange={(e) => setDir(e.target.value)}/>
       </div>
-      <button onClick={handleFirebase}>Enviar pedido</button>
-      <div>
       <Link to={'/cart'}>Volver al carrito</Link>
-      </div>
+      <button onClick={handleFirebase}>Enviar pedido</button>
     </div>
   )
 }

@@ -24,7 +24,12 @@ export default function ItemCart({ product }) {
         <li className="font-bold mt-2">subtotal: {Math.round((product.quantity * product.precio) * 100)/100} USD</li>
       </ul>
 
-      <button onClick={() => removeProduct(product.id)}>Eliminar</button>
+      <button 
+        className={"px-6 py-3 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+        onClick={() => removeProduct(product.id)}
+      >
+        Eliminar
+      </button>
 
     </div>
 

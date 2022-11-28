@@ -72,7 +72,7 @@ export default function ItemCount({ product }) {
           style={{pointerEvents: count ? '' : 'none'}}
           onClick={() => onAdd(count)}
           to={!count || '/cart'} 
-          className={"px-6 py-3 tracking-wider border-2 border-slate-200 active:border-4 active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (count ? "font-bold " : "font-semibold ") + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+          className={"px-6 py-3 tracking-wider border-2 border-slate-200 active:font-extrabold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (count ? "font-bold " : "font-semibold ") + (darkMode ? "text-white" : "text-slate-900 bg-white")}
         >
           ADD TO CART
         </Link>

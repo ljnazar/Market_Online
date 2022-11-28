@@ -50,8 +50,7 @@ export default function ItemListContainer() {
       .then(result => {
         const resultObj = JSON.parse(result);
         const products = resultObj.resultado;
-        console.log(products);
-        const productsWithStock = [...products].filter(product => product.stock_total !== 0)
+        const productsWithStock = [...products].filter(product => product.stock_total !== 0);
         setProducts(productsWithStock);
         setLoader(false);
       })
