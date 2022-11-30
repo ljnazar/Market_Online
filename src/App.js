@@ -15,6 +15,7 @@ export default function App() {
           <NavBar button={true} color={"#dddddd"} />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
+            <Route path="/search/:idSearch" element={<ItemListContainer />} />
             <Route path="/category/:idCategory" element={<ItemListContainer />} />
             <Route path="/item/:idItem" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<CartList />}/>

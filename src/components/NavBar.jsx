@@ -2,8 +2,8 @@ import React, { useState, useContext }  from 'react';
 import CartWidget from './CartWidget'; 
 import { Link } from 'react-router-dom';
 import { generalContext } from './ContextContainer';
-
 import '../style-extended.css';
+import Search from './Search';
 
 export default function NavBar() {
 
@@ -83,11 +83,12 @@ export default function NavBar() {
 
                 <button 
                   className={"z-10 mt-1 px-3 py-1.5 rounded-md hover:bg-gray-600 hover:text-white text-sm font-semibold inline-flex " + (darkMode ? "bg-neutral-800 text-white" : "bg-white text-gray-800")} 
-                  onClick={() => setIsOpenDropdown(!isOpenDropdown)}>
-                      Categorias 
-                      <svg className="ml-2 mt-1 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                      </svg>
+                  onClick={() => setIsOpenDropdown(!isOpenDropdown)}
+                >
+                  Categorias 
+                  <svg className="ml-2 mt-1 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
                 </button>
                 <button 
                   className={isOpenDropdown ? "fixed inset-0 h-full w-full bg-black opacity-50 cursor-default" : ""}
@@ -105,12 +106,14 @@ export default function NavBar() {
                   </Link>
                   <Link 
                   onClick={() => setIsOpenDropdown(false)}
-                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" to={"/category/Parlantes"}>
+                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" to={"/category/Parlantes"}
+                  >
                     Parlantes
                   </Link>
                   <Link 
                   onClick={() => setIsOpenDropdown(false)}
-                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" to={"/category/Monitores"}>
+                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" to={"/category/Monitores"}
+                  >
                     Monitores
                   </Link>
                 </div>
@@ -121,14 +124,7 @@ export default function NavBar() {
 
             <div className="flex items-center">
 
-              <div className="relative hidden md:block">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </div>
-                <input className="w-60 px-2 py-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Notebook, Mouse, Parlante..." required />
-              </div>
+              <Search />
 
               <button className="w-7 h-7 ml-3" onClick={() => setDarkMode(!darkMode)}>
                 {darkMode ?

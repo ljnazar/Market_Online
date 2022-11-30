@@ -12,6 +12,8 @@ export default function ItemListContainer() {
 
   const { idCategory } = useParams();
 
+  const { idSearch } = useParams();
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -33,31 +35,28 @@ export default function ItemListContainer() {
       redirect: 'follow'
     };
 
+    let route = '';
+
     if(idCategory) {
-      fetch(`https://clientes.elit.com.ar/v1/api/productos?sub_categoria=${idCategory}`, requestOptions)
-      .then(response => response.text())
-      .then(result => {
-        const resultObj = JSON.parse(result);
-        const products = resultObj.resultado;
-        const productsWithStock = [...products].filter(product => product.stock_total !== 0)
-        setProducts(productsWithStock);
-        setLoader(false);
-      })
-      .catch(error => console.log('error', error));
+      route = `sub_categoria=${idCategory}`;
+    } else if(idSearch) {
+      route = `nombre=${idSearch}`;
     } else {
-      fetch(`https://clientes.elit.com.ar/v1/api/productos?nombre=gamer`, requestOptions)
-      .then(response => response.text())
-      .then(result => {
-        const resultObj = JSON.parse(result);
-        const products = resultObj.resultado;
-        const productsWithStock = [...products].filter(product => product.stock_total !== 0);
-        setProducts(productsWithStock);
-        setLoader(false);
-      })
-      .catch(error => console.log('error', error));
+      route = `nombre=gamer`;
     }
 
-  }, [idCategory])
+    fetch(`https://clientes.elit.com.ar/v1/api/productos?${route}`, requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      const resultObj = JSON.parse(result);
+      const products = resultObj.resultado;
+      const productsWithStock = [...products].filter(product => product.stock_total !== 0)
+      setProducts(productsWithStock);
+      setLoader(false);
+    })
+    .catch(error => console.log('error', error));
+
+  }, [idCategory, idSearch])
 
   if (loader)
     return (
@@ -68,7 +67,13 @@ export default function ItemListContainer() {
     <div 
       className={"pt-20 " + (darkMode ? "bg-neutral-800" : "bg-gray-100")}
     >
-      <ItemList products={products}/>
+      {products.length === 0 ? 
+        (<h2>
+          SIN STOCK
+        </h2>)
+        :
+        (<ItemList products={products}/>)
+      }
     </div>
   )
 }
