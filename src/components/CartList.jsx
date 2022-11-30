@@ -9,10 +9,10 @@ export default function Cart() {
 
   if(cart.length === 0) {
     return (
-        <>
+        <div className={"pt-20 " + (darkMode ? "bg-neutral-800 text-white" : "bg-gray-100 text-black")}>
           <p>No hay elementos en el carrito</p>
           <Link to={'/'}>Hacer compras</Link>
-        </>
+        </div>
     )
   }
 
