@@ -1,18 +1,25 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React, { useState, useContext } from 'react';
 import { generalContext } from './ContextContainer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import LoaderSpiner from './LoaderSpiner';
 
 export default function Checkout() {
 
-    const { darkMode, cart, totalProducts, totalPrice } = useContext(generalContext);
+    const { darkMode, cart, clearCart, totalProducts, totalPrice } = useContext(generalContext);
 
     const [nombre, setNombre] = useState('');
     const [tel, setTel] = useState('');
     const [email, setEmail] = useState('');
     const [dir, setDir] = useState('');
 
+    const [loader, setLoader] = useState(false);
+
+    const navigate = useNavigate();
+
     const handleFirebase = () => {
+
+      setLoader(true);
 
       const order = {
         buyer: {
@@ -36,15 +43,21 @@ export default function Checkout() {
 
       addDoc(ordersCollection, order)
         .then(({ id }) => {
-          console.log(id);
-          // Mostrar ID de pedido en pantalla
-          // Sacar botón de enviar pedido
-          // Borrar carrito 
+          //console.log(id);
+          setLoader(false);
+          clearCart();
+          navigate(`/confirmation/${id}`);
         })
         .catch(error => console.log('error', error));
 
       }
     };
+
+  if (loader)
+    return (
+      <LoaderSpiner />
+  )
+    
 
   return (
     <div className={"pt-20 " + (darkMode ? "bg-neutral-800 text-white" : "bg-gray-100 text-black")}>

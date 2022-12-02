@@ -6,6 +6,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import ContextContainer from './components/ContextContainer';
 import CartList from './components/CartList';
 import Checkout from './components/Checkout';
+import Confirmation from './components/Confirmation';
 
 export default function App() {
 
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/item/:idItem" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<CartList />}/>
             <Route path="/checkout" element={<Checkout />}/>
+            <Route path="/confirmation/:idOrder" element={<Confirmation />}/>
             <Route />
           </Routes>
       </BrowserRouter>
