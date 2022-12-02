@@ -11,62 +11,53 @@ export default function NavBar() {
 
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
+  const [isOpenBurger, setIsOpenBurger] = useState(false);
+
   const handleEscape = (e) => {
     if (e.key === 'Esc' || e.key === 'Escape'){
       setIsOpenDropdown(false);
     }
   }
 
-  //const [isOpenBurger, setIsOpenBurger] = useState(false);
-
   document.addEventListener('keydown', handleEscape);
 
   return (
     <>
-
 
       <nav className={"fixed top-0 w-full border-2 " + (darkMode ? "bg-neutral-800" : "bg-white")}>
 
         <div className="px-14 lg:px-20">
           <div className="flex h-16 items-center justify-between">
 
-
-            <input type="checkbox" className="toggler block sm:hidden" />
-            <div className="hamburger  block sm:hidden">
+            <input type="checkbox" onChange={() => setIsOpenBurger(!isOpenBurger)} checked={isOpenBurger} className="toggler block sm:hidden" />
+            <div className="hamburger block sm:hidden">
               <div className="block sm:hidden"></div>
             </div>
-            <div className="menu absolute inset-0">
+            <div className="menu absolute inset-0 block sm:hidden">
                 <div>
-                    <ul>
-                        <li><a href='#'>Home</a></li>
-                        <li><a href='#'>About</a></li>
-                        <li><a href='#'>Services</a></li>
-                        <li><a href='#'>Contact</a></li>
+                    <ul className="w-48 ml-4">
+                        <li className="border-t-2 font-semibold"><Link to={"/"} onClick={() => setIsOpenBurger(!isOpenBurger)} className="inline-flex">
+                          <svg className="mr-2 mt-1.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" transform="rotate(-90)">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                          </svg>
+                          Inicio
+                        </Link></li>
+                        <li className="border-t-2 border-b-2 font-semibold inline-flex">
+                          Categorias
+                          <svg className="ml-2 mt-1.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                          </svg>
+                        </li>
+                        <li className="ml-3"><Link to={"/category/Auriculares"} onClick={() => setIsOpenBurger(!isOpenBurger)}>Auriculares</Link></li>
+                        <li className="ml-3"><Link to={"/category/Parlantes"} onClick={() => setIsOpenBurger(!isOpenBurger)}>Parlantes</Link></li>
+                        <li className="ml-3"><Link to={"/category/Monitores"} onClick={() => setIsOpenBurger(!isOpenBurger)}>Monitores</Link></li>
+                        <li className="ml-3"><Link to={"/category/Notebooks Consumo"} onClick={() => setIsOpenBurger(!isOpenBurger)}>Notebooks</Link></li>
+                        <li className="ml-3"><Link to={"/category/PC de Escritorio"} onClick={() => setIsOpenBurger(!isOpenBurger)}>PCs</Link></li>
                     </ul>
                 </div>
             </div>
 
-              
-            <div className="flex border-r-2 sm:border-0">
-
-
-              {/* <button type="button" onClick={() => setIsOpenBurger(!isOpenBurger)}>
-                <svg width="40px" height="40px" viewBox="0 0 50 50" id="emoji" xmlns="http://www.w3.org/2000/svg">
-                  <g id="line">
-                    <line x1="10" x2="40" y1="15" y2="15" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="2"/>
-                    <line x1="10" x2="40" y1="25" y2="25" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="2"/>
-                    <line x1="10" x2="40" y1="35" y2="35" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="2"/>
-                  </g>
-                </svg>
-              </button>
-              <div className={isOpenBurger ? "px-4 py-3" : "hidden"}>
-                <Link className="block font-semibold hover:border px-2 py-1 rounded">Home</Link>
-                <Link className="block font-semibold hover:border-2 px-2 py-1 rounded">Category</Link>
-                <Link className="block font-semibold hover:border-2 px-2 py-1 rounded">Checkout</Link>
-                <Link className="block font-semibold hover:border-2 px-2 py-1 rounded">Etc</Link>
-              </div> */}
-
-
+            <div className="flex">
 
               <Link to={"/"}>
                 <div className="flex">
@@ -75,18 +66,18 @@ export default function NavBar() {
                     src="/logo.webp"
                     alt="logo"
                   />
-                  <h1 className={"px-2 text-3xl font-bold " + (darkMode ? "text-neutral-100" : "text-gray-800")}>OFICOM</h1>
+                  <h1 className={"pl-2 pr-4 text-3xl font-bold border-r-2 " + (darkMode ? "text-neutral-100" : "text-gray-800")}>OFICOM</h1>
                 </div>
               </Link>
              
-              <div className="hidden sm:ml-4 sm:block">
+              <div className="hidden sm:ml-2 sm:block">
 
                 <button 
-                  className={"z-10 mt-1 px-3 py-1.5 rounded-md hover:bg-gray-600 hover:text-white text-sm font-semibold inline-flex " + (darkMode ? "bg-neutral-800 text-white" : "bg-white text-gray-800")} 
+                  className={"z-10 px-3 py-1.5 rounded-md hover:bg-gray-600 hover:text-white font-semibold inline-flex " + (darkMode ? "bg-neutral-800 text-white" : "bg-white text-gray-800")} 
                   onClick={() => setIsOpenDropdown(!isOpenDropdown)}
                 >
                   Categorias 
-                  <svg className="ml-2 mt-1 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="ml-2 mt-1.5 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                   </svg>
                 </button>
@@ -106,15 +97,31 @@ export default function NavBar() {
                   </Link>
                   <Link 
                   onClick={() => setIsOpenDropdown(false)}
-                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" to={"/category/Parlantes"}
+                  to={"/category/Parlantes"}
+                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold"
                   >
                     Parlantes
                   </Link>
                   <Link 
                   onClick={() => setIsOpenDropdown(false)}
-                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" to={"/category/Monitores"}
+                  to={"/category/Monitores"}
+                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" 
                   >
                     Monitores
+                  </Link>
+                  <Link 
+                  onClick={() => setIsOpenDropdown(false)}
+                  to={"/category/Notebooks Consumo"}
+                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" 
+                  >
+                    Notebooks
+                  </Link>
+                  <Link 
+                  onClick={() => setIsOpenDropdown(false)}
+                  to={"/category/PC de Escritorio"}
+                  className="block px-6 py-1.5 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-semibold" 
+                  >
+                    PCs
                   </Link>
                 </div>
 
@@ -146,19 +153,7 @@ export default function NavBar() {
             </div>
           </div>
         </div>
-        {/* <div className="sm:hidden">
-          <div className="space-y-1 px-2 pt-2 pb-3">
-            <Link className=" block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Auriculares"}>
-              Auriculares
-            </Link>
-            <Link className="block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Parlantes"}>
-              Parlantes
-            </Link>
-            <Link className="block px-3 py-2 text-gray-800 hover:bg-gray-600 hover:text-white rounded-md text-sm font-medium" to={"/category/Monitores"}>
-              Monitores
-            </Link>
-          </div>
-        </div> */}
+
       </nav>
 
     </>

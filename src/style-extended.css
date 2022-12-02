@@ -1,31 +1,27 @@
+/* NAV BURGER */
+
 .toggler{
-  /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
     z-index: 1;
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 19px;
+    left: 16px;
     cursor: pointer;
     opacity: 0;
 }
 
 .hamburger{
     position: absolute;
-    top: 12px;
-    left: 8px;
     height: 40px;
     width: 40px;
+    top: 12px;
+    left: 8px;
     padding: 0.6rem;
-  
-  /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
-  
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-/* CREATING THE MIDDLE LINE OF THE HAMBURGER : */
 
 .hamburger > div{
     position: relative;
@@ -36,9 +32,6 @@
     width: 100%;
     transition: all  0.4s ease;
 }
-
-/* CREATING THE TOP AND BOTTOM LINES : 
-TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 
 .hamburger > div::before,
 .hamburger > div::after{
@@ -55,8 +48,6 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
     top: 10px;
 }
 
-/* IF THE TOGGLER IS IN ITS CHECKED STATE, THEN SETTING THE BACKGROUND OF THE MIDDLE LAYER TO COMPLETE BLACK AND OPAQUE :  */
-
 .toggler:checked + .hamburger > div{
     background: rgba(0,0,0,0);
 }
@@ -67,62 +58,37 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
     background: black;
 }
 
-/* AND ROTATING THE TOP AND BOTTOM LINES :  */
-
 .toggler:checked + .hamburger > div::after{
     top: 0;
     transform: rotate(135deg);
     background: black;
 }
 
-
-/* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
-
 .menu{
     z-index: -2;
     background: white;
     width: 0%;
     height: 100vh;
-  
-  /* APPLYING TRANSITION TO THE MENU :  */
-  
     transition: all 0.4s ease;
 }
 
-/* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
-
 .toggler:checked ~ .menu{
-    width: 230px;
+    width: 240px;
 }
-
-
-/* STYLING THE LIST :  */
 
 .menu >  div > ul{
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 70px;
+    top: 65px;
     padding-left: 10px;
-  
-  /* HIDDEN INITIALLY  :  */
-  
     visibility: hidden;
 }
 
 .menu > div > ul > li{
     list-style: none;
-    padding: 0.5rem;
+    padding: 6px;
 }
-
-.menu > div > ul > li > a{
-    color: black;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* WHEN THE TOGGLER IS CHECKED, CHANGE THE VISIBILITY TO VISIBLE :  */
 
 .toggler:checked ~ .menu > div > ul{
     transition: visibility 0.4s ease;
@@ -131,5 +97,6 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 }
 
 .toggler:checked ~ .menu > div > ul > li > a:hover{
-    color: orange;
+    color: #3d3d94;
+    font-weight: 700;
 }
