@@ -13,7 +13,7 @@ export default function App() {
   return (
     <ContextContainer>
       <BrowserRouter>
-          <NavBar button={true} color={"#dddddd"} />
+          <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/search/:idSearch" element={<ItemListContainer />} />

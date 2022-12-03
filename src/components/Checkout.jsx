@@ -35,11 +35,11 @@ export default function Checkout() {
       const db = getFirestore();
       const ordersCollection = collection(db, 'orders');
       // Realizar validaciones
-      if(!nombre || !email || !tel || !dir){
-        return
-      }else if(false){
-        console.log("");
-      }else{
+      // if(!nombre || !email || !tel || !dir){
+      //   return
+      // }else if(false){
+      //   console.log("");
+      // }else{
 
       addDoc(ordersCollection, order)
         .then(({ id }) => {
@@ -51,29 +51,57 @@ export default function Checkout() {
         .catch(error => console.log('error', error));
 
       }
-    };
+
 
   if (loader)
     return (
       <LoaderSpiner />
   )
     
-
   return (
-    <div className={"pt-20 " + (darkMode ? "bg-neutral-800 text-white" : "bg-gray-100 text-black")}>
-      {cart.map((item) => (
-        <p>{item.quantity + " " + item.nombre + " " + item.precio}</p>
-      ))}
+    <div className={"pt-20 flex flex-col items-center " + (darkMode ? "bg-neutral-800 text-white" : "bg-gray-100 text-black")}>
+      <h2 className="text-sm py-2 font-bold">
+        DETALLE DEL PEDIDO
+      </h2>
+      <div className="px-4 py-2 border-2">
+        {cart.map((item) => (
+          <p className="mb-1 font-semibold">{item.quantity + " " + item.nombre + " " + item.precio}</p>
+        ))}
+      </div>
       <p>{totalProducts}</p>
       <p>{totalPrice}</p>
-      <div>
-        <input placeholder="Nombre completo" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <input placeholder="Telefono" value={tel} onChange={(e) => setTel(e.target.value)}/>
-        <input placeholder="Dirección" value={dir} onChange={(e) => setDir(e.target.value)}/>
+      <div className="mt-4">
+        <input type="email" placeholder="Email" className="peer border border-slate-400" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <p className="invisible peer-invalid:visible text-red-700 font-light">
+          Ingrese un mail valido
+        </p>
+        <input type="text" placeholder="Nombre completo" className="peer border border-slate-400" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+        <p className="invisible peer-invalid:visible text-red-700 font-light">
+          Ingrese su nombre
+        </p>
+        <input type="number" placeholder="Telefono" className="peer border border-slate-400" value={tel} onChange={(e) => setTel(e.target.value)}/>
+        <p className="invisible peer-invalid:visible text-red-700 font-light">
+          Ingrese su telefono
+        </p>
+        <input type="text" placeholder="Dirección" className="peer border border-slate-400" value={dir} onChange={(e) => setDir(e.target.value)}/>
+        <p className="invisible peer-invalid:visible text-red-700 font-light">
+          Ingrese su dirección
+        </p>
       </div>
-      <Link to={'/cart'}>Volver al carrito</Link>
-      <button onClick={handleFirebase}>Enviar pedido</button>
+      <div className="px-4 py-4 flex justify-center">
+        <Link 
+          to={'/cart'}
+          className={"px-6 py-3 mr-6 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+        >
+          Volver al carrito
+        </Link>
+        <button 
+          onClick={handleFirebase}
+          className={"px-6 py-3 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+        >
+          Enviar pedido
+        </button>
+      </div>
     </div>
   )
 }
