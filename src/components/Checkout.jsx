@@ -13,44 +13,46 @@ export default function Checkout() {
     const [email, setEmail] = useState('');
     const [dir, setDir] = useState('');
 
+    const [validator, setValidator] = useState(false);
+
     const [loader, setLoader] = useState(false);
 
     const navigate = useNavigate();
 
     const handleFirebase = () => {
+      
+      if(nombre && tel && email && dir){
+      
+        setLoader(true);
 
-      setLoader(true);
+        const order = {
+          buyer: {
+          name: nombre,
+          email: email,
+          phone: tel,
+          address: dir,
+          },
+          items: cart.map(product => ({ id: product.id, nombre: product.nombre, precio: product.precio, cantidad: product.quantity})),
+          total: Math.round(totalPrice() * 100)/100
+        };
 
-      const order = {
-        buyer: {
-        name: nombre,
-        email: email,
-        phone: tel,
-        address: dir,
-        },
-        items: cart.map(product => ({ id: product.id, nombre: product.nombre, precio: product.precio, cantidad: product.quantity})),
-        total: Math.round(totalPrice() * 100)/100
-      };
+        const db = getFirestore();
+        const ordersCollection = collection(db, 'orders');
 
-      const db = getFirestore();
-      const ordersCollection = collection(db, 'orders');
-      // Realizar validaciones
-      // if(!nombre || !email || !tel || !dir){
-      //   return
-      // }else if(false){
-      //   console.log("");
-      // }else{
+        addDoc(ordersCollection, order)
+          .then(({ id }) => {
+            //console.log(id);
+            setLoader(false);
+            clearCart();
+            navigate(`/confirmation/${id}`);
+          })
+          .catch(error => console.log('error', error));
 
-      addDoc(ordersCollection, order)
-        .then(({ id }) => {
-          //console.log(id);
-          setLoader(false);
-          clearCart();
-          navigate(`/confirmation/${id}`);
-        })
-        .catch(error => console.log('error', error));
-
+      } else {
+        setValidator(true);
       }
+
+    }
 
 
   if (loader)
@@ -88,6 +90,11 @@ export default function Checkout() {
           Ingrese su dirección
         </p>
       </div>
+      {!validator ||
+        (<h2 className="text-red-700 font-semibold">
+          Se requiere completar todos los campos para enviar el pedido
+        </h2>)
+      }
       <div className="px-4 py-4 flex justify-center">
         <Link 
           to={'/cart'}
