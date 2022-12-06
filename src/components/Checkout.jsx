@@ -61,7 +61,7 @@ export default function Checkout() {
   )
     
   return (
-    <div className={"pt-20 flex flex-col items-center " + (darkMode ? "bg-neutral-800 text-white" : "bg-gray-100 text-black")}>
+    <div className={"h-screen pt-20 flex flex-col items-center " + (darkMode ? "text-white" : "text-black")}>
       <h2 className="text-sm py-2 font-bold">
         DETALLE DEL PEDIDO
       </h2>

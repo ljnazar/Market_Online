@@ -1,12 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import { generalContext } from './ContextContainer';
 import LoaderSkeleton from './LoaderSkeleton';
 
 export default function ItemListContainer() {
-
-  const { darkMode } = useContext(generalContext);
 
   const [loader, setLoader] = useState(true);
 
@@ -65,10 +62,10 @@ export default function ItemListContainer() {
 
   return (
     <div 
-      className={"pt-20 " + (darkMode ? "bg-neutral-800" : "bg-gray-100")}
+      className={"pt-20"}
     >
       {products.length === 0 ? 
-        (<h2>
+        (<h2 className="text-center font-semibold">
           SIN STOCK
         </h2>)
         :

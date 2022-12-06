@@ -30,6 +30,7 @@ export default function ContextContainer( { children } ) {
   
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    darkMode ? document.body.style.backgroundColor = "#262626" : document.body.style.backgroundColor = "#f3f4f6";
   }, [darkMode])
 
   useEffect(() => {

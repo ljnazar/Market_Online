@@ -1,15 +1,11 @@
-import React, { useContext } from 'react'
-import { generalContext } from './ContextContainer';
+import React from 'react'
 
 export default function LoaderSkeleton() {
 
-  const {darkMode} = useContext(generalContext);
-
   return (
     <div
-      className={"pt-20 flex justify-center flex-wrap " + (darkMode ? "bg-neutral-800" : "bg-gray-100")}
+      className={"pt-20 flex justify-center flex-wrap"}
     >
-
       {[...Array(8)].map(() =>
         (<div className="flex flex-col justify-evenly w-60 mx-8 my-6 border">
           <div className="p-4 bg-white shadow">
@@ -26,7 +22,6 @@ export default function LoaderSkeleton() {
           </div>
         </div>)
       )}
-
     </div>
   )
 }

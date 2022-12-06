@@ -1,12 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
-import { generalContext } from './ContextContainer';
 import LoaderSpiner from './LoaderSpiner';
 
 export default function ItemDetailContainer() {
-
-    const { darkMode } = useContext(generalContext);
 
     const [loader, setLoader] = useState(true);
 
@@ -50,7 +47,7 @@ export default function ItemDetailContainer() {
       
   return (
     <div 
-      className={"pt-20 " + (darkMode ? "bg-neutral-800" : "bg-gray-100")}
+      className={"pt-20"}
     >
       <ItemDetail product={product[0]} />
     </div>
