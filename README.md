@@ -1,5 +1,5 @@
-Market Online of Store Oficom S.R.L  
+Market Online - Oficom S.R.L.
 
-Tailwind use for styles and use API of vendor. 
+Made with React Js and using Tailwind for the styles.
 
 https://market-oficom.web.app/  
