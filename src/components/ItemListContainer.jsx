@@ -39,7 +39,7 @@ export default function ItemListContainer() {
     } else if(idSearch) {
       route = `nombre=${idSearch}`;
     } else {
-      route = `nombre=gamer`;
+      route = `nombre=gaming`;
     }
 
     fetch(`https://clientes.elit.com.ar/v1/api/productos?${route}`, requestOptions)
