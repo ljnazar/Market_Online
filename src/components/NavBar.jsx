@@ -153,7 +153,7 @@ export default function NavBar() {
 
               <button type="button" className="ml-3 mr-2 max-w-xs items-center rounded-full ring-1 ring-offset-1 ring-offset-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span className="sr-only">Open user menu</span>
-                <img className="h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                <img className="h-8 w-8 rounded-full" src="https://www.jea.com/cdn/images/avatar/avatar-alt.svg" alt=""/>
               </button>
 
             </div>
