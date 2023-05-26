@@ -25,7 +25,7 @@ export default function CartWidget() {
         </svg>)
       }
 
-      <span className={"font-bold ml-1 mt-2 " + (darkMode ? "text-white" : "text-black")}>{totalProducts() || ''}</span>
+      <span className={"font-bold self-end " + (darkMode ? "text-white" : "text-black")}>{totalProducts() || ''}</span>
 
     </div>
 

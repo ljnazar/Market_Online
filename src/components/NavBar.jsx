@@ -26,7 +26,7 @@ export default function NavBar() {
 
       <nav className={"fixed top-0 w-full border-2 " + (darkMode ? "bg-neutral-800" : "bg-white")}>
 
-        <div className="px-14 lg:px-20">
+        <div className="px-4 lg:px-20">
           <div className="flex h-16 items-center justify-between">
 
             <input type="checkbox" onChange={() => setIsOpenBurger(!isOpenBurger)} checked={isOpenBurger} className="toggler block sm:hidden" />
@@ -60,7 +60,7 @@ export default function NavBar() {
             <div className="flex">
 
               <Link to={"/"}>
-                <div className="flex">
+                <div className="ml-8 sm:ml-0 flex">
                   <img
                     className="block h-10 w-10 rounded-full border-white border-2"
                     src="/logo.webp"
@@ -69,7 +69,7 @@ export default function NavBar() {
                   <h1 className={"pl-2 pr-4 text-3xl font-bold border-r-2 " + (darkMode ? "text-neutral-100" : "text-gray-800")}>OFICOM</h1>
                 </div>
               </Link>
-             
+
               <div className="hidden sm:ml-2 sm:block">
 
                 <button 
@@ -145,11 +145,17 @@ export default function NavBar() {
                 }
               </button>
 
-              <button className="ml-1 flex">
+              <button className="ml-1">
                 <Link to={"/cart"}>
                   <CartWidget />
                 </Link>
               </button>
+
+              <button type="button" className="ml-3 mr-2 max-w-xs items-center rounded-full ring-1 ring-offset-1 ring-offset-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span className="sr-only">Open user menu</span>
+                <img className="h-9 w-9 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+              </button>
+
             </div>
           </div>
         </div>
