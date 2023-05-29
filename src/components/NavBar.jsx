@@ -1,5 +1,6 @@
 import React, { useState, useContext }  from 'react';
-import CartWidget from './CartWidget'; 
+import CartWidget from './CartWidget';
+import AvatarWidget from './AvatarWidget'; 
 import { Link } from 'react-router-dom';
 import { generalContext } from './ContextContainer';
 import '../style-extended.css';
@@ -9,10 +10,10 @@ export default function NavBar() {
 
   const {darkMode, setDarkMode} = useContext(generalContext);
 
-  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-
   const [isOpenBurger, setIsOpenBurger] = useState(false);
 
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+  
   const handleEscape = (e) => {
     if (e.key === 'Esc' || e.key === 'Escape'){
       setIsOpenDropdown(false);
@@ -86,7 +87,6 @@ export default function NavBar() {
                   onClick={() => setIsOpenDropdown(false)}
                 >
                 </button>
-
                 <div className={isOpenDropdown ? "absolute mt-2 bg-white rounded-md shadow-xl" : "hidden"}>
                   <Link 
                     onClick={() => setIsOpenDropdown(false)}
@@ -145,16 +145,11 @@ export default function NavBar() {
                 }
               </button>
 
-              <button className="ml-1">
-                <Link to={"/cart"}>
-                  <CartWidget />
-                </Link>
-              </button>
+              <Link className="ml-1" to={"/cart"}>
+                <CartWidget />
+              </Link>
 
-              <button type="button" className="ml-3 mr-2 max-w-xs items-center rounded-full ring-1 ring-offset-1 ring-offset-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                <span className="sr-only">Open user menu</span>
-                <img className="h-8 w-8 rounded-full" src="https://www.jea.com/cdn/images/avatar/avatar-alt.svg" alt=""/>
-              </button>
+              <AvatarWidget />
 
             </div>
           </div>
