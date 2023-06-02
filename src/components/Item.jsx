@@ -1,15 +1,12 @@
-import React, { useContext} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { generalContext } from './ContextContainer';
 
 export default function Item({product}) {
-
-  const { darkMode } = useContext(generalContext);
 
   return (
     
     <div 
-    className={"flex flex-col w-60 mx-8 my-6 border-2 " + (darkMode ? "text-white border-white" : "text-black border-black")}
+    className="flex flex-col w-60 mx-8 my-6 border-2 dark:border-white dark:text-white"
     key={product.id}
     >
 

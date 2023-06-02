@@ -1,10 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { generalContext } from './ContextContainer';
 
 export default function AvatarWidget() {
-
-    const {darkMode} = useContext(generalContext);
 
     const [isOpenDropdown, setIsOpenDropdown] = useState(false);
 
@@ -18,8 +15,8 @@ export default function AvatarWidget() {
 
     return (
         <div className="hidden sm:ml-2 sm:block">
-            <button 
-                className={"z-10 px-3 py-1.5 rounded-md hover:bg-gray-600 hover:text-white font-semibold inline-flex " + (darkMode ? "bg-neutral-800 text-white" : "bg-white text-gray-800")} 
+            <button
+                className="z-10 px-3 py-1.5 rounded-md hover:bg-gray-600 hover:text-white font-semibold inline-flex dark:bg-neutral-800 dark:text-white"
                 onClick={() => setIsOpenDropdown(!isOpenDropdown)}
             >
                 Categorias 

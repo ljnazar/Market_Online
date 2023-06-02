@@ -1,11 +1,11 @@
 import React, { useContext }  from 'react';
+import { Link } from 'react-router-dom';
+import { generalContext } from './ContextContainer';
+import '../style-extended.css';
 import DropdownCategory from './DropdownCategory';
 import LateralMenu from './LateralMenu'; 
 import CartWidget from './CartWidget';
 import AvatarWidget from './AvatarWidget'; 
-import { Link } from 'react-router-dom';
-import { generalContext } from './ContextContainer';
-import '../style-extended.css';
 import Search from './Search';
 
 export default function NavBar() {
@@ -15,7 +15,7 @@ export default function NavBar() {
   return (
     <>
 
-      <nav className={"fixed top-0 w-full border-2 " + (darkMode ? "bg-neutral-800" : "bg-white")}>
+      <nav className="fixed top-0 w-full border-2 dark:bg-neutral-800">
 
         <div className="px-4 lg:px-20">
           <div className="flex h-16 items-center justify-between">
@@ -31,7 +31,7 @@ export default function NavBar() {
                     src="/logo.webp"
                     alt="logo"
                   />
-                  <h1 className={"pl-2 pr-4 text-3xl font-bold border-r-2 " + (darkMode ? "text-neutral-100" : "text-gray-800")}>OFICOM</h1>
+                  <h1 className="pl-2 pr-4 text-3xl font-bold border-r-2 dark:text-neutral-100">OFICOM</h1>
                 </div>
               </Link>
 

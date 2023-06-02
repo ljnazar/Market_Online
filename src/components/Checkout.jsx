@@ -6,7 +6,7 @@ import LoaderSpiner from './LoaderSpiner';
 
 export default function Checkout() {
 
-    const { darkMode, cart, clearCart, totalProducts, totalPrice } = useContext(generalContext);
+    const { cart, clearCart, totalProducts, totalPrice } = useContext(generalContext);
 
     const [nombre, setNombre] = useState('');
     const [tel, setTel] = useState('');
@@ -61,7 +61,7 @@ export default function Checkout() {
   )
     
   return (
-    <div className={"h-screen pt-20 flex flex-col items-center " + (darkMode ? "text-white" : "text-black")}>
+    <div className="h-screen pt-20 flex flex-col items-center dark:text-white">
       <h2 className="text-sm py-2 font-bold">
         DETALLE DEL PEDIDO
       </h2>
@@ -98,13 +98,13 @@ export default function Checkout() {
       <div className="px-4 py-4 flex justify-center">
         <Link 
           to={'/cart'}
-          className={"px-6 py-3 mr-6 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+          className="px-6 py-3 mr-6 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 dark:text-white"
         >
           Volver al carrito
         </Link>
         <button 
           onClick={handleFirebase}
-          className={"px-6 py-3 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+          className="px-6 py-3 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 dark:text-white"
         >
           Enviar pedido
         </button>

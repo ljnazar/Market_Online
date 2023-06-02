@@ -3,12 +3,12 @@ import { generalContext } from './ContextContainer';
 
 export default function ItemCart({ product }) {
 
-  const {darkMode, removeProduct} = useContext(generalContext);
+  const { removeProduct } = useContext(generalContext);
 
   return (
 
     <div 
-    className={"flex flex-col w-60 mx-8 my-6 border-2 " + (darkMode ? "text-white border-white" : " text-black border-black")}
+    className="flex flex-col w-60 mx-8 my-6 border-2 dark:text-white dark:border-white"
     >
 
       <img 
@@ -25,7 +25,7 @@ export default function ItemCart({ product }) {
       </ul>
 
       <button 
-        className={"px-6 py-3 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+        className="px-6 py-3 tracking-wider border-2 border-slate-200 font-semibold active:font-bold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 text-slate-900 dark:text-white"
         onClick={() => removeProduct(product.id)}
       >
         Eliminar

@@ -4,7 +4,7 @@ import { generalContext } from './ContextContainer';
 
 export default function ItemCount({ product }) {
 
-  const {darkMode, cart, addProduct} = useContext(generalContext);
+  const { cart, addProduct } = useContext(generalContext);
 
   let initialStock = product.stock_total;
 
@@ -72,11 +72,11 @@ export default function ItemCount({ product }) {
           style={{pointerEvents: count ? '' : 'none'}}
           onClick={() => onAdd(count)}
           to={!count || '/cart'} 
-          className={"px-6 py-3 tracking-wider border-2 border-slate-200 active:font-extrabold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 " + (count ? "font-bold " : "font-semibold ") + (darkMode ? "text-white" : "text-slate-900 bg-white")}
+          className={"px-6 py-3 tracking-wider border-2 border-slate-200 active:font-extrabold active:before:bg-teal-400 hover:text-black hover:bg-teal-400 text-slate-900 dark:text-white " + (count ? "font-bold " : "font-semibold ")}
         >
           ADD TO CART
         </Link>
-        <button className={"flex-none flex items-center justify-center w-12 h-12 " + (darkMode ? "text-white" : "text-black")}>
+        <button className="flex-none flex items-center justify-center w-12 h-12 dark:text-white">
           <svg width={20} height={20} fill="currentColor" aria-hidden="true">
             <path fillRule="evenodd" clipRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
           </svg>
